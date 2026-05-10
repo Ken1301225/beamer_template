@@ -156,9 +156,15 @@
 \setbeamerfont{author}{size=\normalsize}
 \setbeamerfont{institute}{size=\small}
 \setbeamerfont{date}{size=\small}
-\setbeamerfont{section in head}{size=\scriptsize,series=\bfseries}
-\setbeamerfont{subsection in head}{size=\tiny}
+\setbeamerfont{section in head}{size=\normalsize,series=\bfseries}
+\setbeamerfont{subsection in head}{size=\small}
 \setbeamersize{text margin left=0.65cm,text margin right=0.65cm}
+
+% ====================
+% Section 计数器（供进度条使用）
+% ====================
+\newcounter{totalsections}
+\AtBeginSection{\stepcounter{totalsections}}
 
 % ====================
 % Block 模板 —— 柔和纸感卡片
@@ -270,30 +276,42 @@
 }
 
 % ====================
-% Header 模板 —— 章节名 + 页码 + 进度条
+% Header 模板 —— 章节名 + 页码 + 分段进度条
 % ====================
 \makeatletter
 \setbeamertemplate{headline}{%
+  \vskip6pt%
   \leavevmode%
   \hbox to \paperwidth{%
     \hskip0.5cm%
-    {\usebeamerfont{section in head}\color{w-subtext}\insertsection}%
+    {\usebeamerfont{section in head}\color{w-text}\insertsection}%
     \hfill
-    {\usebeamerfont{date}\color{w-accent}\insertframenumber\,/\,\inserttotalframenumber}%
+    {\usebeamerfont{date}\color{w-subtext}\insertframenumber\,/\,\inserttotalframenumber}%
     \hskip0.5cm%
   }%
-  \vskip2pt%
-  \ifnum\inserttotalframenumber>0%
-    \ifnum\insertframenumber>0%
-      \pgfmathsetmacro{\progresswidth}{\insertframenumber/\inserttotalframenumber}%
-      {\color{w-accent}\rule{\progresswidth\paperwidth}{2.5pt}}%
-      {\color{w-line}\rule{\dimexpr\paperwidth-\progresswidth\paperwidth}{2.5pt}}%
-    \else
-      {\color{w-line}\rule{\paperwidth}{2.5pt}}%
-    \fi
-  \else
-    {\color{w-line}\rule{\paperwidth}{2.5pt}}%
-  \fi
+  \vskip4pt%
+  \ifnum\value{totalsections}>0%
+    \leavevmode%
+    \hbox to \paperwidth{%
+      \hskip0.5cm%
+      \foreach \i in {1,...,\value{totalsections}}{%
+        \ifnum\i<\insertsectionnumber%
+          {\color{w-accent}\rule{\dimexpr(\paperwidth-1cm)/\value{totalsections}-2pt\relax}{4pt}}%
+          \hskip2pt%
+        \else
+          \ifnum\i=\insertsectionnumber%
+            {\color{w-rose}\rule{\dimexpr(\paperwidth-1cm)/\value{totalsections}-2pt\relax}{4pt}}%
+            \hskip2pt%
+          \else
+            {\color{w-line}\rule{\dimexpr(\paperwidth-1cm)/\value{totalsections}-2pt\relax}{4pt}}%
+            \hskip2pt%
+          \fi
+        \fi
+      }%
+      \hfill%
+    }%
+  \fi%
+  \vskip3pt%
 }
 \makeatother
 
