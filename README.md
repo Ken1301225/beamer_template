@@ -1,43 +1,45 @@
-# Beamer Template — Gruvbox Light Theme
+# Beamer Template — Catppuccin Latte Theme
 
-A customized Beamer presentation template with the **Gruvbox Light** color scheme, Chinese support, and matching code highlighting.
+A customized Beamer presentation template with the **Catppuccin Latte** color scheme, Chinese support, and matching code highlighting.
 
 ## Features
 
 - **Theme**: Based on the Madrid theme with extensive customizations
-- **Color Scheme**: Authentic Gruvbox Light palette extracted from the official color card
-- **Light Mode**: Warm paper-like background (`#f9f5d7`) with high-contrast foreground (`#413829`)
+- **Color Scheme**: Full Catppuccin Latte palette — crisp cool-white base with vibrant accents
+- **Light Mode**: Clean off-white background (`#EFF1F5`) with high-contrast foreground (`#4C4F69`)
 - **Chinese Support**: Full `ctex` integration for Chinese documents
-- **Code Highlighting**: Pre-configured `listings` package with Gruvbox-matched colors
+- **Code Highlighting**: Pre-configured `listings` package with Catppuccin-matched colors
 - **Algorithms**: `algorithm` and `algpseudocode` packages ready to use
 - **Bibliography**: `biblatex` with Biber backend configured
 - **Auto-framing**: Custom `autoframe` environment using section/subsection titles
 - **Left-Accent Blocks**: Clean block style with colored vertical accent lines — no backgrounds, no shadows
 
-## Authentic Gruvbox Light Palette
+## Catppuccin Latte Color Palette
 
-Extracted directly from the official Gruvbox color card:
+### Neutrals
 
 | Role | Color | Hex |
 |------|-------|-----|
-| Background (bg0) | Warm paper | `#f9f5d7` |
-| Background (bg1) | Light beige | `#f5edca` |
-| Background (bg2) | Beige | `#f3eac7` |
-| Background (bg3) | Soft tan | `#f2e5bc` |
-| Background (bg4) | Tan | `#eee0b7` |
-| Background (bg5) | Deep tan | `#ebdbb2` |
-| Foreground (fg0) | Dark brown | `#5a4735` |
-| Foreground (fg1) | Deep brown | `#413829` |
-| Red | Muted red | `#c14a4a` |
-| Orange | Warm orange | `#c55e0a` |
-| Yellow | Golden yellow | `#b47109` |
-| Green | Olive green | `#6c782e` |
-| Aqua | Sage green | `#4c7a5d` |
-| Blue | Steel blue | `#45707a` |
-| Purple | Dusty purple | `#945e80` |
-| Grey0 | Warm grey | `#a89984` |
-| Grey1 | Medium grey | `#928374` |
-| Grey2 | Dark grey | `#7c6f64` |
+| Base (page bg) | Off-white | `#EFF1F5` |
+| Mantle (header) | Pale gray | `#E6E9EF` |
+| Crust (footer) | Light gray | `#DCE0E8` |
+| Surface 0 | Mid gray | `#CCD0DA` |
+| Text (body) | Dark blue-gray | `#4C4F69` |
+| Subtext 1 (titles) | Medium dark | `#5C5F77` |
+| Subtext 0 (secondary) | Medium | `#6C6F85` |
+| Overlay 0 (accent line) | Light gray | `#9CA0B0` |
+
+### Accents
+
+| Role | Color | Hex |
+|------|-------|-----|
+| Blue (structure) | Pure blue | `#1E66F5` |
+| Green (example) | Vibrant green | `#40A02B` |
+| Red (alert) | Bright red | `#D20F39` |
+| Yellow | Golden yellow | `#DF8E1D` |
+| Mauve (purple) | Rich purple | `#8839EF` |
+| Teal | Teal | `#179299` |
+| Peach (orange) | Bright orange | `#FE640B` |
 
 ## Usage
 
@@ -61,76 +63,74 @@ Extracted directly from the official Gruvbox color card:
 
 ## Page Color Hierarchy
 
-The page is architected with clear layers to avoid the "one big beige blob" problem:
-
 ```
-┌─ Header (bg5 #ebdbb2, deep tan) ───────────────┐  ← ~8% area
-══ Aqua bottom line ══════════════════════════════
-│ Frametitle (transparent, dark text)             │  ← ~4% area
-│ ── bg4 thin line ────────────────────────────── │
-│                                                  │
-│   │ Block Title (colored bold, no bg)           │  ← Blocks: ~12% area
-│   │ ─────────────                               │     transparent bg
-│   │ Content here...                             │
-│   │                                              │
-│                                                  │
-│ ── bg4 top line ─────────────────────────────── │
-├─ Footer (bg3 #f2e5bc, soft tan) ───────────────┤  ← ~6% area
-└──────────────────────────────────────────────────┘
-    ↑ Page background bg0 #f9f5d7 (~70% area)
+┌─ Header (mantle #E6E9EF) ───────────────────────┐
+══ Blue #1E66F5 bottom line ═══════════════════════
+│ Frametitle (transparent, dark text)               │
+│ ── Surface0 thin line ────────────────────────── │
+│                                                    │
+│   │ Block Title (colored bold, no bg)             │
+│   │ ─────────────                                 │
+│   │ Content here...                               │
+│                                                    │
+│ ── Surface0 top line ───────────────────────────  │
+├─ Footer (crust #DCE0E8) ─────────────────────────┤
+└────────────────────────────────────────────────────┘
+    ↑ Page background base #EFF1F5
 ```
 
 | Region | Background | Purpose |
 |--------|-----------|---------|
-| Page | `bg0 #f9f5d7` | Main content area, lightest |
-| Header | `bg5 #ebdbb2` | Top navigation bar, darkest bg |
-| Footer | `bg3 #f2e5bc` | Bottom info bar, medium depth |
-| Frametitle | Transparent | Avoids merging with header |
+| Page | `base #EFF1F5` | Main content area, clean off-white |
+| Header | `mantle #E6E9EF` | Top navigation bar |
+| Footer | `crust #DCE0E8` | Bottom info bar |
+| Frametitle | Transparent | Ultra clean, no background bar |
 | Block | Transparent | No extra color blocks, lines only |
 
 ## Block Design — Left Accent Line
 
-All three block types share a unified minimal aesthetic:
-
 ```
-│  Block Title              ← bold colored text, no background
-│  ───────────────          ← 1pt colored separator line
-│  Content here...          ← body text, transparent background
-│  More content...
-│                           ← 3pt colored vertical line on the left
+│  Normal Block Title     ← dark text, no background
+│  ───────────────        ← 1pt gray separator
+│  Content here...        ← body text, transparent bg
+│
+│  Alert Block Title      ← red #D20F39 bold text
+│  ─────────────────      ← 1pt red separator
+│  Content...
+│
+│  Example Block Title    ← green #40A02B bold text
+│  ───────────────────    ← 1pt green separator
+│  Content...
+│                           ← 3pt colored vertical line
 ```
 
-- **No background fill** — block body is transparent, blending with the page
+- **No background fill** — transparent, blending with the page
 - **No border, no shadow, no rounded corners** — pure lines
-- **Left accent line** — 3pt thick vertical line in block-specific color:
-  - Normal: dark brown `#5a4735`
-  - Alert: red `#c14a4a`
-  - Example: green `#6c782e`
-- **Title** — bold text matching the left line color, no background box
-- **Separator** — 1pt thin line under the title, color-matched but semi-transparent
+- **Left accent line** — 3pt thick vertical line:
+  - Normal: overlay0 `#9CA0B0`
+  - Alert: red `#D20F39`
+  - Example: green `#40A02B`
+- **Title** — bold text matching the left line color
+- **Separator** — 1pt thin line under the title
 
 ## Custom Commands
 
-- `\emphblue{text}` — Blue bold emphasis
-- `\emphred{text}` — Red bold emphasis
-- `\emphgreen{text}` — Green bold emphasis
-- `\empyellow{text}` — Yellow bold emphasis
-- `\emppurple{text}` — Purple bold emphasis
-- `\empaqua{text}` — Aqua bold emphasis
-- `\emporange{text}` — Orange bold emphasis
+- `\emphblue{text}` — Blue `#1E66F5` bold
+- `\emphred{text}` — Red `#D20F39` bold
+- `\emphgreen{text}` — Green `#40A02B` bold
+- `\empyellow{text}` — Yellow `#DF8E1D` bold
+- `\emppurple{text}` — Mauve `#8839EF` bold
+- `\empaqua{text}` — Teal `#179299` bold
+- `\emporange{text}` — Peach `#FE640B` bold
 - `eblock` environment — Custom left-accent tcolorbox
 - `autoframe` environment — Frame that auto-uses section/subsection titles
 
-## Preview
+## Why Catppuccin over Gruvbox?
 
-The template produces a professional light presentation with:
-- Authentic Gruvbox warm paper background with dark brown text
-- Clear page hierarchy via header/footer color bands
-- Clean left-accent blocks with no background clutter
-- Custom section numbering in table of contents (aqua/blue circles)
-- Customized itemize bullets per level (aqua → blue → purple)
-- Matching code blocks with Gruvbox syntax highlighting
-- Clean title page: title/subtitle in a light box, author/institute/date without background boxes
+- **No yellow tint** — base `#EFF1F5` is a clean cool white, not aged paper
+- **Higher contrast accents** — blue `#1E66F5`, red `#D20F39`, green `#40A02B` pop against the background
+- **Modern feel** — crisp, young, suitable for both academic and product presentations
+- **Excellent code highlighting** — mauve keywords, green strings, gray comments on clean white
 
 ## License
 

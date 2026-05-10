@@ -1,3 +1,4 @@
+% !TEX program = xelatex 
 \documentclass[aspectratio=169]{beamer}
 
 % ====================
@@ -40,33 +41,39 @@
 \usepackage{algpseudocode}
 
 % ====================
-% Gruvbox Light 配色定义 (精确值来自配色卡)
+% Catppuccin Latte 配色定义
 % ====================
-% 背景色
-\definecolor{gruvbox-bg0}{HTML}{f9f5d7}
-\definecolor{gruvbox-bg1}{HTML}{f5edca}
-\definecolor{gruvbox-bg2}{HTML}{f3eac7}
-\definecolor{gruvbox-bg3}{HTML}{f2e5bc}
-\definecolor{gruvbox-bg4}{HTML}{eee0b7}
-\definecolor{gruvbox-bg5}{HTML}{ebdbb2}
+% 背景/中性色
+\definecolor{ctp-base}{HTML}{EFF1F5}
+\definecolor{ctp-mantle}{HTML}{E6E9EF}
+\definecolor{ctp-crust}{HTML}{DCE0E8}
+\definecolor{ctp-surface0}{HTML}{CCD0DA}
+\definecolor{ctp-surface1}{HTML}{BCC0CC}
+\definecolor{ctp-surface2}{HTML}{ACB0BE}
 
-% 强调色 (Normal, 用于 Light 模式)
-\definecolor{gruvbox-red}{HTML}{c14a4a}
-\definecolor{gruvbox-orange}{HTML}{c55e0a}
-\definecolor{gruvbox-yellow}{HTML}{b47109}
-\definecolor{gruvbox-green}{HTML}{6c782e}
-\definecolor{gruvbox-aqua}{HTML}{4c7a5d}
-\definecolor{gruvbox-blue}{HTML}{45707a}
-\definecolor{gruvbox-purple}{HTML}{945e80}
+% 前景/文字色
+\definecolor{ctp-text}{HTML}{4C4F69}
+\definecolor{ctp-subtext1}{HTML}{5C5F77}
+\definecolor{ctp-subtext0}{HTML}{6C6F85}
+\definecolor{ctp-overlay2}{HTML}{7C7F93}
+\definecolor{ctp-overlay1}{HTML}{8C8FA1}
+\definecolor{ctp-overlay0}{HTML}{9CA0B0}
 
-% 灰色
-\definecolor{gruvbox-grey0}{HTML}{a89984}
-\definecolor{gruvbox-grey1}{HTML}{928374}
-\definecolor{gruvbox-grey2}{HTML}{7c6f64}
-
-% 前景色
-\definecolor{gruvbox-fg0}{HTML}{5a4735}
-\definecolor{gruvbox-fg1}{HTML}{413829}
+% 强调色
+\definecolor{ctp-rosewater}{HTML}{DC8A78}
+\definecolor{ctp-flamingo}{HTML}{DD7878}
+\definecolor{ctp-pink}{HTML}{EA76CB}
+\definecolor{ctp-mauve}{HTML}{8839EF}
+\definecolor{ctp-red}{HTML}{D20F39}
+\definecolor{ctp-maroon}{HTML}{E64553}
+\definecolor{ctp-peach}{HTML}{FE640B}
+\definecolor{ctp-yellow}{HTML}{DF8E1D}
+\definecolor{ctp-green}{HTML}{40A02B}
+\definecolor{ctp-teal}{HTML}{179299}
+\definecolor{ctp-sky}{HTML}{04A5E5}
+\definecolor{ctp-sapphire}{HTML}{209FB5}
+\definecolor{ctp-blue}{HTML}{1E66F5}
+\definecolor{ctp-lavender}{HTML}{7287FD}
 
 % ====================
 % 算法名称
@@ -74,88 +81,88 @@
 \renewcommand{\algorithmname}{Algorithm}
 
 % ====================
-% 代码高亮设置 (Gruvbox Light)
+% 代码高亮设置 (Catppuccin Latte)
 % ====================
 \lstset{
-    basicstyle=\ttfamily\small\color{gruvbox-fg1},
-    keywordstyle=\color{gruvbox-red}\bfseries,
-    commentstyle=\color{gruvbox-grey1}\itshape,
-    stringstyle=\color{gruvbox-green},
+    basicstyle=\ttfamily\small\color{ctp-text},
+    keywordstyle=\color{ctp-mauve}\bfseries,
+    commentstyle=\color{ctp-overlay1}\itshape,
+    stringstyle=\color{ctp-green},
     numbers=left,
-    numberstyle=\tiny\color{gruvbox-grey0},
+    numberstyle=\tiny\color{ctp-overlay0},
     frame=single,
     breaklines=true,
     showstringspaces=false,
-    rulecolor=\color{gruvbox-bg3},
-    backgroundcolor=\color{gruvbox-bg0},
+    rulecolor=\color{ctp-surface0},
+    backgroundcolor=\color{ctp-base},
     morekeywords={\documentclass,\usepackage,\begin,\end,\section,\subsection,\frametitle,\title,\author,\institute,\date,\tableofcontents,\printbibliography}
 }
 
 % ====================
-% Beamer 全局配色 (Gruvbox Light)
+% Beamer 全局配色 (Catppuccin Latte)
 % ====================
-\setbeamercolor{normal text}{fg=gruvbox-fg1,bg=gruvbox-bg0}
-\setbeamercolor{structure}{fg=gruvbox-aqua}
+\setbeamercolor{normal text}{fg=ctp-text,bg=ctp-base}
+\setbeamercolor{structure}{fg=ctp-blue}
 
 % 标题页 —— 标题/副标题保留背景框，作者/机构/日期无背景
-\setbeamercolor{title}{fg=gruvbox-fg0,bg=gruvbox-bg2}
-\setbeamercolor{subtitle}{fg=gruvbox-fg0,bg=gruvbox-bg2}
-\setbeamercolor{author}{fg=gruvbox-fg1,bg=}
-\setbeamercolor{institute}{fg=gruvbox-grey0,bg=}
-\setbeamercolor{date}{fg=gruvbox-grey1,bg=}
+\setbeamercolor{title}{fg=ctp-subtext1,bg=ctp-mantle}
+\setbeamercolor{subtitle}{fg=ctp-subtext1,bg=ctp-mantle}
+\setbeamercolor{author}{fg=ctp-text,bg=}
+\setbeamercolor{institute}{fg=ctp-overlay0,bg=}
+\setbeamercolor{date}{fg=ctp-overlay1,bg=}
 
 % 帧标题 —— 透明背景 + 底部细线
-\setbeamercolor{frametitle}{fg=gruvbox-fg0,bg=gruvbox-bg0}
-\setbeamercolor{framesubtitle}{fg=gruvbox-fg0,bg=gruvbox-bg0}
+\setbeamercolor{frametitle}{fg=ctp-subtext1,bg=ctp-base}
+\setbeamercolor{framesubtitle}{fg=ctp-subtext0,bg=ctp-base}
 
 % 块标题颜色
-\setbeamercolor{block title}{fg=gruvbox-fg0}
-\setbeamercolor{block body}{fg=gruvbox-fg1}
-\setbeamercolor{block title alerted}{fg=gruvbox-red}
-\setbeamercolor{block body alerted}{fg=gruvbox-fg1}
-\setbeamercolor{block title example}{fg=gruvbox-green}
-\setbeamercolor{block body example}{fg=gruvbox-fg1}
+\setbeamercolor{block title}{fg=ctp-subtext1}
+\setbeamercolor{block body}{fg=ctp-text}
+\setbeamercolor{block title alerted}{fg=ctp-red}
+\setbeamercolor{block body alerted}{fg=ctp-text}
+\setbeamercolor{block title example}{fg=ctp-green}
+\setbeamercolor{block body example}{fg=ctp-text}
 
 % 强调文字
-\setbeamercolor{alerted text}{fg=gruvbox-red}
-\setbeamercolor{example text}{fg=gruvbox-green}
+\setbeamercolor{alerted text}{fg=ctp-red}
+\setbeamercolor{example text}{fg=ctp-green}
 
 % Header / Footer 导航颜色
-\setbeamercolor{section in head/foot}{fg=gruvbox-fg0,bg=gruvbox-bg5}
-\setbeamercolor{section in head/foot shaded}{fg=gruvbox-grey1,bg=gruvbox-bg5}
-\setbeamercolor{subsection in head/foot}{fg=gruvbox-aqua,bg=gruvbox-bg5}
-\setbeamercolor{subsection in head/foot shaded}{fg=gruvbox-grey1,bg=gruvbox-bg5}
-\setbeamercolor{author in head/foot}{fg=gruvbox-fg1,bg=gruvbox-bg3}
-\setbeamercolor{title in head/foot}{fg=gruvbox-grey1,bg=gruvbox-bg3}
-\setbeamercolor{date in head/foot}{fg=gruvbox-grey0,bg=gruvbox-bg3}
-\setbeamercolor{page number in head/foot}{fg=gruvbox-fg1,bg=gruvbox-bg3}
+\setbeamercolor{section in head/foot}{fg=ctp-subtext1,bg=ctp-mantle}
+\setbeamercolor{section in head/foot shaded}{fg=ctp-overlay1,bg=ctp-mantle}
+\setbeamercolor{subsection in head/foot}{fg=ctp-blue,bg=ctp-mantle}
+\setbeamercolor{subsection in head/foot shaded}{fg=ctp-overlay1,bg=ctp-mantle}
+\setbeamercolor{author in head/foot}{fg=ctp-text,bg=ctp-crust}
+\setbeamercolor{title in head/foot}{fg=ctp-overlay1,bg=ctp-crust}
+\setbeamercolor{date in head/foot}{fg=ctp-overlay0,bg=ctp-crust}
+\setbeamercolor{page number in head/foot}{fg=ctp-text,bg=ctp-crust}
 
 % 目录
-\setbeamercolor{section in toc}{fg=gruvbox-fg1}
-\setbeamercolor{subsection in toc}{fg=gruvbox-fg0}
+\setbeamercolor{section in toc}{fg=ctp-text}
+\setbeamercolor{subsection in toc}{fg=ctp-subtext1}
 
 % 列表与枚举
-\setbeamercolor{item}{fg=gruvbox-aqua}
-\setbeamercolor{subitem}{fg=gruvbox-blue}
-\setbeamercolor{subsubitem}{fg=gruvbox-purple}
-\setbeamercolor{item projected}{fg=gruvbox-bg0,bg=gruvbox-aqua}
-\setbeamercolor{subitem projected}{fg=gruvbox-bg0,bg=gruvbox-blue}
-\setbeamercolor{subsubitem projected}{fg=gruvbox-bg0,bg=gruvbox-purple}
+\setbeamercolor{item}{fg=ctp-blue}
+\setbeamercolor{subitem}{fg=ctp-teal}
+\setbeamercolor{subsubitem}{fg=ctp-mauve}
+\setbeamercolor{item projected}{fg=ctp-base,bg=ctp-blue}
+\setbeamercolor{subitem projected}{fg=ctp-base,bg=ctp-teal}
+\setbeamercolor{subsubitem projected}{fg=ctp-base,bg=ctp-mauve}
 
 % 按钮与链接
-\setbeamercolor{button}{bg=gruvbox-bg2,fg=gruvbox-fg1}
-\setbeamercolor{button border}{fg=gruvbox-bg3}
-\setbeamercolor{navigation symbols}{fg=gruvbox-grey0}
-\setbeamercolor{navigation symbols dimmed}{fg=gruvbox-bg3}
+\setbeamercolor{button}{bg=ctp-surface0,fg=ctp-text}
+\setbeamercolor{button border}{fg=ctp-surface1}
+\setbeamercolor{navigation symbols}{fg=ctp-overlay0}
+\setbeamercolor{navigation symbols dimmed}{fg=ctp-surface1}
 
 % 参考文献与其他
-\setbeamercolor{bibliography entry author}{fg=gruvbox-fg1}
-\setbeamercolor{bibliography entry title}{fg=gruvbox-aqua}
-\setbeamercolor{bibliography entry journal}{fg=gruvbox-grey0}
-\setbeamercolor{bibliography item}{fg=gruvbox-aqua}
-\setbeamercolor{caption}{fg=gruvbox-fg0}
-\setbeamercolor{caption name}{fg=gruvbox-aqua}
-\setbeamercolor{qed symbol}{fg=gruvbox-green}
+\setbeamercolor{bibliography entry author}{fg=ctp-text}
+\setbeamercolor{bibliography entry title}{fg=ctp-blue}
+\setbeamercolor{bibliography entry journal}{fg=ctp-overlay0}
+\setbeamercolor{bibliography item}{fg=ctp-blue}
+\setbeamercolor{caption}{fg=ctp-subtext0}
+\setbeamercolor{caption name}{fg=ctp-blue}
+\setbeamercolor{qed symbol}{fg=ctp-green}
 
 % ====================
 % Block 模板 —— 左侧强调线风格
@@ -169,17 +176,17 @@
   \noindent%
   \begin{tcolorbox}[
     enhanced,
-    colback=gruvbox-bg0,
-    colframe=gruvbox-bg0,
+    colback=ctp-base,
+    colframe=ctp-base,
     frame hidden,
-    borderline west={3pt}{0pt}{gruvbox-fg0},
+    borderline west={3pt}{0pt}{ctp-overlay0},
     left=10pt, right=4pt, top=4pt, bottom=4pt,
     boxrule=0pt, arc=0pt,
     before skip=0pt, after skip=0pt
   ]
   {\usebeamerfont{block title}\usebeamercolor[fg]{block title}\insertblocktitle}%
   \vspace{2pt}%
-  {\color{gruvbox-bg4}\hrule height 1pt}%
+  {\color{ctp-surface0}\hrule height 1pt}%
   \vspace{4pt}%
 }
 \setbeamertemplate{block end}{%
@@ -193,17 +200,17 @@
   \noindent%
   \begin{tcolorbox}[
     enhanced,
-    colback=gruvbox-bg0,
-    colframe=gruvbox-bg0,
+    colback=ctp-base,
+    colframe=ctp-base,
     frame hidden,
-    borderline west={3pt}{0pt}{gruvbox-red},
+    borderline west={3pt}{0pt}{ctp-red},
     left=10pt, right=4pt, top=4pt, bottom=4pt,
     boxrule=0pt, arc=0pt,
     before skip=0pt, after skip=0pt
   ]
   {\usebeamerfont{block title}\usebeamercolor[fg]{block title alerted}\insertblocktitle}%
   \vspace{2pt}%
-  {\color{gruvbox-red!50}\hrule height 1pt}%
+  {\color{ctp-red!50}\hrule height 1pt}%
   \vspace{4pt}%
 }
 \setbeamertemplate{block alerted end}{%
@@ -217,17 +224,17 @@
   \noindent%
   \begin{tcolorbox}[
     enhanced,
-    colback=gruvbox-bg0,
-    colframe=gruvbox-bg0,
+    colback=ctp-base,
+    colframe=ctp-base,
     frame hidden,
-    borderline west={3pt}{0pt}{gruvbox-green},
+    borderline west={3pt}{0pt}{ctp-green},
     left=10pt, right=4pt, top=4pt, bottom=4pt,
     boxrule=0pt, arc=0pt,
     before skip=0pt, after skip=0pt
   ]
   {\usebeamerfont{block title}\usebeamercolor[fg]{block title example}\insertblocktitle}%
   \vspace{2pt}%
-  {\color{gruvbox-green!50}\hrule height 1pt}%
+  {\color{ctp-green!50}\hrule height 1pt}%
   \vspace{4pt}%
 }
 \setbeamertemplate{block example end}{%
@@ -251,15 +258,15 @@
     \usebeamerfont{frametitle}\insertframetitle
     \ifx\insertframesubtitle\@empty
     \else
-      {\hspace{0.6em}\usebeamerfont{framesubtitle}\color{gruvbox-fg0}\insertframesubtitle}
+      {\hspace{0.6em}\usebeamerfont{framesubtitle}\color{ctp-subtext0}\insertframesubtitle}
     \fi
   \end{beamercolorbox}
   \vskip-1pt%
-  {\color{gruvbox-bg4}\hrule height 1pt}%
+  {\color{ctp-surface0}\hrule height 1pt}%
 }
 
 % ====================
-% Header 模板 —— bg5 背景 + aqua 底线
+% Header 模板 —— mantle 背景 + blue 底线
 % ====================
 \setbeamertemplate{headline}{%
   \leavevmode%
@@ -272,14 +279,14 @@
     \end{beamercolorbox}%
   }%
   \vskip-1pt%
-  {\color{gruvbox-aqua}\hrule height 2pt}%
+  {\color{ctp-blue}\hrule height 2pt}%
 }
 
 % ====================
-% Footer 模板 —— bg4 顶线 + bg3 背景
+% Footer 模板 —— surface0 顶线 + crust 背景
 % ====================
 \setbeamertemplate{footline}{%
-  {\color{gruvbox-bg4}\hrule height 1pt}%
+  {\color{ctp-surface0}\hrule height 1pt}%
   \leavevmode%
   \hbox{%
     \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
@@ -315,22 +322,22 @@
 % ====================
 \newtcolorbox{eblock}[1][]{
     enhanced,
-    colback=gruvbox-bg0,
-    colframe=gruvbox-bg0,
+    colback=ctp-base,
+    colframe=ctp-base,
     frame hidden,
-    borderline west={3pt}{0pt}{gruvbox-fg0},
+    borderline west={3pt}{0pt}{ctp-overlay0},
     left=10pt, right=4pt, top=4pt, bottom=4pt,
     boxrule=0pt, arc=0pt,
     #1
 }
 
 % ====================
-% 目录样式 (Gruvbox Light)
+% 目录样式 (Catppuccin Latte)
 % ====================
 \setbeamertemplate{section in toc}{
   \leavevmode\leftskip=1em%
   \tikz[baseline=-0.5ex]{
-    \node[draw=gruvbox-aqua, fill=gruvbox-aqua!15, circle, inner sep=1pt, text=gruvbox-fg0, font=\bfseries\footnotesize]
+    \node[draw=ctp-blue, fill=ctp-blue!15, circle, inner sep=1pt, text=ctp-text, font=\bfseries\footnotesize]
       {\inserttocsectionnumber};
   }\hspace{0.6em}%
   \inserttocsection
@@ -339,29 +346,29 @@
 \setbeamertemplate{subsection in toc}{
   \leavevmode\leftskip=2.5em%
   \tikz[baseline=-0.5ex]{
-    \node[draw=gruvbox-blue, fill=gruvbox-blue!15, circle, inner sep=0.7pt, text=gruvbox-fg0, font=\scriptsize]
+    \node[draw=ctp-teal, fill=ctp-teal!15, circle, inner sep=0.7pt, text=ctp-text, font=\scriptsize]
       {\inserttocsubsectionnumber};
   }\hspace{0.6em}%
   \inserttocsubsection\par
 }
 
 % ====================
-% 项目符号样式 (Gruvbox Light)
+% 项目符号样式 (Catppuccin Latte)
 % ====================
-\setbeamertemplate{itemize item}{\color{gruvbox-aqua}$\bullet$}
-\setbeamertemplate{itemize subitem}{\color{gruvbox-blue}$\bullet$}
-\setbeamertemplate{itemize subsubitem}{\color{gruvbox-purple}$\circ$}
+\setbeamertemplate{itemize item}{\color{ctp-blue}$\bullet$}
+\setbeamertemplate{itemize subitem}{\color{ctp-teal}$\bullet$}
+\setbeamertemplate{itemize subsubitem}{\color{ctp-mauve}$\circ$}
 
 % ====================
 % 自定义强调命令
 % ====================
-\newcommand{\emphblue}[1]{\textbf{\color{gruvbox-blue}#1}}
-\newcommand{\emphred}[1]{\textbf{\color{gruvbox-red}#1}}
-\newcommand{\emphgreen}[1]{\textbf{\color{gruvbox-green}#1}}
-\newcommand{\empyellow}[1]{\textbf{\color{gruvbox-yellow}#1}}
-\newcommand{\emppurple}[1]{\textbf{\color{gruvbox-purple}#1}}
-\newcommand{\empaqua}[1]{\textbf{\color{gruvbox-aqua}#1}}
-\newcommand{\emporange}[1]{\textbf{\color{gruvbox-orange}#1}}
+\newcommand{\emphblue}[1]{\textbf{\color{ctp-blue}#1}}
+\newcommand{\emphred}[1]{\textbf{\color{ctp-red}#1}}
+\newcommand{\emphgreen}[1]{\textbf{\color{ctp-green}#1}}
+\newcommand{\empyellow}[1]{\textbf{\color{ctp-yellow}#1}}
+\newcommand{\emppurple}[1]{\textbf{\color{ctp-mauve}#1}}
+\newcommand{\empaqua}[1]{\textbf{\color{ctp-teal}#1}}
+\newcommand{\emporange}[1]{\textbf{\color{ctp-peach}#1}}
 
 % ====================
 % 标题信息（请修改）
@@ -411,13 +418,13 @@
 
 \begin{frame}{Blocks Showcase}
     \begin{block}{Normal Block}
-        This is a normal block with left accent line style. No background fill, no shadow — just a clean vertical line and a subtle separator under the title.
+        Left-accent block with no background fill. Clean, minimal, modern Catppuccin aesthetic.
     \end{block}
     \begin{alertblock}{Alert Block}
-        This is an alert block with Gruvbox \emphred{red} left accent line and title.
+        Alert block with \emphred{red} left accent. Catppuccin red \texttt{\#D20F39}.
     \end{alertblock}
     \begin{exampleblock}{Example Block}
-        This is an example block with Gruvbox \emphgreen{green} left accent line and title.
+        Example block with \emphgreen{green} left accent. Catppuccin green \texttt{\#40A02B}.
     \end{exampleblock}
 \end{frame}
 
@@ -429,7 +436,7 @@ def hello_world(name):
     print(greeting)
     return greeting
 
-hello_world("Gruvbox")
+hello_world("Catppuccin")
     \end{lstlisting}
 \end{frame}
 
