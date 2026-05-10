@@ -1,3 +1,4 @@
+% !TEX program = xelatex    
 \documentclass[aspectratio=169]{beamer}
 
 % ====================
@@ -269,20 +270,10 @@
 }
 
 % ====================
-% Header 模板 —— 进度条 + 章节名 + 页码
+% Header 模板 —— 章节名 + 页码 + 进度条
 % ====================
 \makeatletter
 \setbeamertemplate{headline}{%
-  \begin{tikzpicture}[remember picture,overlay]
-    \fill[w-line] (0,0) rectangle (\the\paperwidth, 3pt);
-    \ifnum\inserttotalframenumber>0%
-      \ifnum\insertframenumber>0%
-        \pgfmathsetmacro{\progress}{\insertframenumber/\inserttotalframenumber}%
-        \fill[w-accent] (0,0) rectangle ({\progress*\the\paperwidth}, 3pt);
-      \fi
-    \fi
-  \end{tikzpicture}%
-  \vskip4pt%
   \leavevmode%
   \hbox to \paperwidth{%
     \hskip0.5cm%
@@ -292,7 +283,17 @@
     \hskip0.5cm%
   }%
   \vskip2pt%
-  {\color{w-line}\hrule height 0.3pt}%
+  \ifnum\inserttotalframenumber>0%
+    \ifnum\insertframenumber>0%
+      \pgfmathsetmacro{\progresswidth}{\insertframenumber/\inserttotalframenumber}%
+      {\color{w-accent}\rule{\progresswidth\paperwidth}{2.5pt}}%
+      {\color{w-line}\rule{\dimexpr\paperwidth-\progresswidth\paperwidth}{2.5pt}}%
+    \else
+      {\color{w-line}\rule{\paperwidth}{2.5pt}}%
+    \fi
+  \else
+    {\color{w-line}\rule{\paperwidth}{2.5pt}}%
+  \fi
 }
 \makeatother
 
