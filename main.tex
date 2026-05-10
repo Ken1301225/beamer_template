@@ -34,44 +34,39 @@
 \usepackage{hyperref}
 \usepackage{bbm}
 \usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
 \usepackage{algorithm}
 \usepackage{caption}
 \usepackage{algpseudocode}
 
 % ====================
-% Gruvbox Light 配色定义
+% Gruvbox Light 配色定义 (精确值来自配色卡)
 % ====================
-% 背景色 (由浅到深)
-\definecolor{gruvbox-bg0}{HTML}{fbf1c7}
-\definecolor{gruvbox-bg0h}{HTML}{f9f5d7}
-\definecolor{gruvbox-bg1}{HTML}{ebdbb2}
-\definecolor{gruvbox-bg2}{HTML}{d5c4a1}
-\definecolor{gruvbox-bg3}{HTML}{bdae93}
-\definecolor{gruvbox-bg4}{HTML}{a89984}
+% 背景色
+\definecolor{gruvbox-bg0}{HTML}{f9f5d7}
+\definecolor{gruvbox-bg1}{HTML}{f5edca}
+\definecolor{gruvbox-bg2}{HTML}{f3eac7}
+\definecolor{gruvbox-bg3}{HTML}{f2e5bc}
+\definecolor{gruvbox-bg4}{HTML}{eee0b7}
+\definecolor{gruvbox-bg5}{HTML}{ebdbb2}
 
-% 前景色 (由深到浅)
-\definecolor{gruvbox-fg0}{HTML}{282828}
-\definecolor{gruvbox-fg1}{HTML}{3c3836}
-\definecolor{gruvbox-fg2}{HTML}{504945}
-\definecolor{gruvbox-fg3}{HTML}{665c54}
-\definecolor{gruvbox-fg4}{HTML}{7c6f64}
+% 强调色 (Normal, 用于 Light 模式)
+\definecolor{gruvbox-red}{HTML}{c14a4a}
+\definecolor{gruvbox-orange}{HTML}{c55e0a}
+\definecolor{gruvbox-yellow}{HTML}{b47109}
+\definecolor{gruvbox-green}{HTML}{6c782e}
+\definecolor{gruvbox-aqua}{HTML}{4c7a5d}
+\definecolor{gruvbox-blue}{HTML}{45707a}
+\definecolor{gruvbox-purple}{HTML}{945e80}
 
-% 强调色 (正常 / 柔和)
-\definecolor{gruvbox-red}{HTML}{cc241d}
-\definecolor{gruvbox-red-soft}{HTML}{9d0006}
-\definecolor{gruvbox-green}{HTML}{98971a}
-\definecolor{gruvbox-green-soft}{HTML}{79740e}
-\definecolor{gruvbox-yellow}{HTML}{d79921}
-\definecolor{gruvbox-yellow-soft}{HTML}{b57614}
-\definecolor{gruvbox-blue}{HTML}{458588}
-\definecolor{gruvbox-blue-soft}{HTML}{076678}
-\definecolor{gruvbox-purple}{HTML}{b16286}
-\definecolor{gruvbox-purple-soft}{HTML}{8f3f71}
-\definecolor{gruvbox-aqua}{HTML}{689d6a}
-\definecolor{gruvbox-aqua-soft}{HTML}{427b58}
-\definecolor{gruvbox-orange}{HTML}{d65d0e}
-\definecolor{gruvbox-orange-soft}{HTML}{af3a03}
-\definecolor{gruvbox-gray}{HTML}{928374}
+% 灰色
+\definecolor{gruvbox-grey0}{HTML}{a89984}
+\definecolor{gruvbox-grey1}{HTML}{928374}
+\definecolor{gruvbox-grey2}{HTML}{7c6f64}
+
+% 前景色
+\definecolor{gruvbox-fg0}{HTML}{5a4735}
+\definecolor{gruvbox-fg1}{HTML}{413829}
 
 % ====================
 % 算法名称
@@ -83,81 +78,159 @@
 % ====================
 \lstset{
     basicstyle=\ttfamily\small\color{gruvbox-fg1},
-    keywordstyle=\color{gruvbox-red-soft}\bfseries,
-    commentstyle=\color{gruvbox-gray}\itshape,
-    stringstyle=\color{gruvbox-green-soft},
+    keywordstyle=\color{gruvbox-red}\bfseries,
+    commentstyle=\color{gruvbox-grey1}\itshape,
+    stringstyle=\color{gruvbox-green},
     numbers=left,
-    numberstyle=\tiny\color{gruvbox-fg4},
+    numberstyle=\tiny\color{gruvbox-grey0},
     frame=single,
     breaklines=true,
     showstringspaces=false,
     rulecolor=\color{gruvbox-bg3},
-    backgroundcolor=\color{gruvbox-bg0h},
+    backgroundcolor=\color{gruvbox-bg0},
     morekeywords={\documentclass,\usepackage,\begin,\end,\section,\subsection,\frametitle,\title,\author,\institute,\date,\tableofcontents,\printbibliography}
 }
 
 % ====================
 % Beamer 全局配色 (Gruvbox Light)
 % ====================
-% 基础文字与背景
 \setbeamercolor{normal text}{fg=gruvbox-fg1,bg=gruvbox-bg0}
-\setbeamercolor{structure}{fg=gruvbox-aqua-soft}
+\setbeamercolor{structure}{fg=gruvbox-aqua}
 
-% 标题页 —— 标题保留浅色背景框，作者/机构/日期无背景
+% 标题页
 \setbeamercolor{title}{fg=gruvbox-fg0,bg=gruvbox-bg2}
-\setbeamercolor{subtitle}{fg=gruvbox-fg3,bg=gruvbox-bg2}
-\setbeamercolor{author}{fg=gruvbox-fg2,bg=}
-\setbeamercolor{institute}{fg=gruvbox-fg4,bg=}
-\setbeamercolor{date}{fg=gruvbox-fg3,bg=}
+\setbeamercolor{subtitle}{fg=gruvbox-fg0,bg=gruvbox-bg2}
+\setbeamercolor{author}{fg=gruvbox-fg1,bg=}
+\setbeamercolor{institute}{fg=gruvbox-grey0,bg=}
+\setbeamercolor{date}{fg=gruvbox-grey1,bg=}
 
 % 帧标题
 \setbeamercolor{frametitle}{fg=gruvbox-fg0,bg=gruvbox-bg2}
-\setbeamercolor{framesubtitle}{fg=gruvbox-fg3,bg=gruvbox-bg2}
+\setbeamercolor{framesubtitle}{fg=gruvbox-fg0,bg=gruvbox-bg2}
 
-% 块环境
-\setbeamercolor{block title}{fg=gruvbox-fg0,bg=gruvbox-bg3}
-\setbeamercolor{block body}{fg=gruvbox-fg1,bg=gruvbox-bg1}
-\setbeamercolor{block title alerted}{fg=gruvbox-bg0,bg=gruvbox-red}
-\setbeamercolor{block body alerted}{fg=gruvbox-fg1,bg=gruvbox-bg1}
-\setbeamercolor{block title example}{fg=gruvbox-bg0,bg=gruvbox-green}
-\setbeamercolor{block body example}{fg=gruvbox-fg1,bg=gruvbox-bg1}
+% 块标题 (供 \usebeamercolor 引用)
+\setbeamercolor{block title}{fg=gruvbox-fg0}
+\setbeamercolor{block body}{fg=gruvbox-fg1}
+\setbeamercolor{block title alerted}{fg=gruvbox-red}
+\setbeamercolor{block body alerted}{fg=gruvbox-fg1}
+\setbeamercolor{block title example}{fg=gruvbox-green}
+\setbeamercolor{block body example}{fg=gruvbox-fg1}
 
 % 强调文字
-\setbeamercolor{alerted text}{fg=gruvbox-red-soft}
-\setbeamercolor{example text}{fg=gruvbox-green-soft}
+\setbeamercolor{alerted text}{fg=gruvbox-red}
+\setbeamercolor{example text}{fg=gruvbox-green}
 
 % 目录与导航
 \setbeamercolor{section in toc}{fg=gruvbox-fg1}
-\setbeamercolor{subsection in toc}{fg=gruvbox-fg2}
-\setbeamercolor{section in head/foot}{fg=gruvbox-fg2,bg=gruvbox-bg1}
-\setbeamercolor{subsection in head/foot}{fg=gruvbox-fg3,bg=gruvbox-bg1}
-\setbeamercolor{author in head/foot}{fg=gruvbox-fg2,bg=gruvbox-bg1}
-\setbeamercolor{title in head/foot}{fg=gruvbox-fg3,bg=gruvbox-bg1}
-\setbeamercolor{date in head/foot}{fg=gruvbox-fg4,bg=gruvbox-bg1}
-\setbeamercolor{page number in head/foot}{fg=gruvbox-fg3,bg=gruvbox-bg1}
+\setbeamercolor{subsection in toc}{fg=gruvbox-fg0}
+\setbeamercolor{section in head/foot}{fg=gruvbox-fg1,bg=gruvbox-bg1}
+\setbeamercolor{subsection in head/foot}{fg=gruvbox-grey1,bg=gruvbox-bg1}
+\setbeamercolor{author in head/foot}{fg=gruvbox-fg1,bg=gruvbox-bg1}
+\setbeamercolor{title in head/foot}{fg=gruvbox-grey1,bg=gruvbox-bg1}
+\setbeamercolor{date in head/foot}{fg=gruvbox-grey0,bg=gruvbox-bg1}
+\setbeamercolor{page number in head/foot}{fg=gruvbox-grey1,bg=gruvbox-bg1}
 
 % 列表与枚举
-\setbeamercolor{item}{fg=gruvbox-aqua-soft}
-\setbeamercolor{subitem}{fg=gruvbox-blue-soft}
-\setbeamercolor{subsubitem}{fg=gruvbox-purple-soft}
-\setbeamercolor{item projected}{fg=gruvbox-bg0,bg=gruvbox-aqua-soft}
-\setbeamercolor{subitem projected}{fg=gruvbox-bg0,bg=gruvbox-blue-soft}
-\setbeamercolor{subsubitem projected}{fg=gruvbox-bg0,bg=gruvbox-purple-soft}
+\setbeamercolor{item}{fg=gruvbox-aqua}
+\setbeamercolor{subitem}{fg=gruvbox-blue}
+\setbeamercolor{subsubitem}{fg=gruvbox-purple}
+\setbeamercolor{item projected}{fg=gruvbox-bg0,bg=gruvbox-aqua}
+\setbeamercolor{subitem projected}{fg=gruvbox-bg0,bg=gruvbox-blue}
+\setbeamercolor{subsubitem projected}{fg=gruvbox-bg0,bg=gruvbox-purple}
 
 % 按钮与链接
 \setbeamercolor{button}{bg=gruvbox-bg2,fg=gruvbox-fg1}
 \setbeamercolor{button border}{fg=gruvbox-bg3}
-\setbeamercolor{navigation symbols}{fg=gruvbox-fg4}
+\setbeamercolor{navigation symbols}{fg=gruvbox-grey0}
 \setbeamercolor{navigation symbols dimmed}{fg=gruvbox-bg3}
 
-% 其他
+% 参考文献与其他
 \setbeamercolor{bibliography entry author}{fg=gruvbox-fg1}
-\setbeamercolor{bibliography entry title}{fg=gruvbox-aqua-soft}
-\setbeamercolor{bibliography entry journal}{fg=gruvbox-fg3}
-\setbeamercolor{bibliography item}{fg=gruvbox-aqua-soft}
-\setbeamercolor{caption}{fg=gruvbox-fg2}
-\setbeamercolor{caption name}{fg=gruvbox-aqua-soft}
-\setbeamercolor{qed symbol}{fg=gruvbox-green-soft}
+\setbeamercolor{bibliography entry title}{fg=gruvbox-aqua}
+\setbeamercolor{bibliography entry journal}{fg=gruvbox-grey0}
+\setbeamercolor{bibliography item}{fg=gruvbox-aqua}
+\setbeamercolor{caption}{fg=gruvbox-fg0}
+\setbeamercolor{caption name}{fg=gruvbox-aqua}
+\setbeamercolor{qed symbol}{fg=gruvbox-green}
+
+% ====================
+% 取消默认 block 样式，改用方案 C (柔光卡片)
+% ====================
+\setbeamertemplate{blocks}[default]
+
+% 普通 Block —— 大圆角、无边框、弥散阴影、标题底部分隔线
+\makeatletter
+\setbeamertemplate{block begin}{%
+  \vspace{6pt}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=gruvbox-bg1,
+    colframe=gruvbox-bg1,
+    arc=8pt,
+    boxrule=0pt,
+    left=10pt, right=10pt, top=6pt, bottom=10pt,
+    frame hidden,
+    drop fuzzy shadow={gruvbox-bg3!40},
+    before skip=0pt, after skip=0pt
+  ]
+  {\usebeamerfont{block title}\usebeamercolor[fg]{block title}\insertblocktitle}%
+  \vspace{3pt}%
+  {\color{gruvbox-bg3}\hrule height 1pt}%
+  \vspace{5pt}%
+}
+\setbeamertemplate{block end}{%
+  \end{tcolorbox}%
+  \vspace{6pt}%
+}
+
+% Alert Block —— 红色调阴影
+\setbeamertemplate{block alerted begin}{%
+  \vspace{6pt}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=gruvbox-bg1,
+    colframe=gruvbox-bg1,
+    arc=8pt,
+    boxrule=0pt,
+    left=10pt, right=10pt, top=6pt, bottom=10pt,
+    frame hidden,
+    drop fuzzy shadow={gruvbox-red!25},
+    before skip=0pt, after skip=0pt
+  ]
+  {\usebeamerfont{block title}\usebeamercolor[fg]{block title alerted}\insertblocktitle}%
+  \vspace{3pt}%
+  {\color{gruvbox-red!50}\hrule height 1pt}%
+  \vspace{5pt}%
+}
+\setbeamertemplate{block alerted end}{%
+  \end{tcolorbox}%
+  \vspace{6pt}%
+}
+
+% Example Block —— 绿色调阴影
+\setbeamertemplate{block example begin}{%
+  \vspace{6pt}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=gruvbox-bg1,
+    colframe=gruvbox-bg1,
+    arc=8pt,
+    boxrule=0pt,
+    left=10pt, right=10pt, top=6pt, bottom=10pt,
+    frame hidden,
+    drop fuzzy shadow={gruvbox-green!30},
+    before skip=0pt, after skip=0pt
+  ]
+  {\usebeamerfont{block title}\usebeamercolor[fg]{block title example}\insertblocktitle}%
+  \vspace{3pt}%
+  {\color{gruvbox-green!50}\hrule height 1pt}%
+  \vspace{5pt}%
+}
+\setbeamertemplate{block example end}{%
+  \end{tcolorbox}%
+  \vspace{6pt}%
+}
+\makeatother
 
 % ====================
 % 列表符号样式
@@ -174,7 +247,7 @@
     \usebeamerfont{frametitle}\insertframetitle
     \ifx\insertframesubtitle\@empty
     \else
-      {\hspace{0.6em}\usebeamerfont{framesubtitle}\color{gruvbox-fg3}\insertframesubtitle}
+      {\hspace{0.6em}\usebeamerfont{framesubtitle}\color{gruvbox-grey1}\insertframesubtitle}
     \fi
   \end{beamercolorbox}
 }
@@ -190,7 +263,7 @@
 % 字体与布局调整
 % ====================
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{blocks}[default]
 \usefonttheme{professionalfonts}
 \useinnertheme{rounded}
 \useoutertheme{infolines}
@@ -199,13 +272,14 @@
 % 自定义 tcolorbox (Gruvbox Light)
 % ====================
 \newtcolorbox{eblock}[1][]{
+    enhanced,
     colback=gruvbox-bg1,
-    colframe=gruvbox-bg3,
-    coltitle=gruvbox-fg0,
-    fonttitle=\bfseries,
-    arc=4pt,
-    boxrule=1pt,
-    left=4pt, right=4pt, top=2pt, bottom=2pt,
+    colframe=gruvbox-bg1,
+    arc=8pt,
+    boxrule=0pt,
+    left=10pt, right=10pt, top=6pt, bottom=10pt,
+    frame hidden,
+    drop fuzzy shadow={gruvbox-bg3!40},
     #1
 }
 
@@ -215,7 +289,7 @@
 \setbeamertemplate{section in toc}{
   \leavevmode\leftskip=1em%
   \tikz[baseline=-0.5ex]{
-    \node[draw=gruvbox-aqua-soft, fill=gruvbox-aqua!20, circle, inner sep=1pt, text=gruvbox-bg0, font=\bfseries\footnotesize]
+    \node[draw=gruvbox-aqua, fill=gruvbox-aqua!15, circle, inner sep=1pt, text=gruvbox-fg0, font=\bfseries\footnotesize]
       {\inserttocsectionnumber};
   }\hspace{0.6em}%
   \inserttocsection
@@ -224,7 +298,7 @@
 \setbeamertemplate{subsection in toc}{
   \leavevmode\leftskip=2.5em%
   \tikz[baseline=-0.5ex]{
-    \node[draw=gruvbox-blue-soft, fill=gruvbox-blue!20, circle, inner sep=0.7pt, text=gruvbox-bg0, font=\scriptsize]
+    \node[draw=gruvbox-blue, fill=gruvbox-blue!15, circle, inner sep=0.7pt, text=gruvbox-fg0, font=\scriptsize]
       {\inserttocsubsectionnumber};
   }\hspace{0.6em}%
   \inserttocsubsection\par
@@ -233,20 +307,20 @@
 % ====================
 % 项目符号样式 (Gruvbox Light)
 % ====================
-\setbeamertemplate{itemize item}{\color{gruvbox-aqua-soft}$\bullet$}
-\setbeamertemplate{itemize subitem}{\color{gruvbox-blue-soft}$\bullet$}
-\setbeamertemplate{itemize subsubitem}{\color{gruvbox-purple-soft}$\circ$}
+\setbeamertemplate{itemize item}{\color{gruvbox-aqua}$\bullet$}
+\setbeamertemplate{itemize subitem}{\color{gruvbox-blue}$\bullet$}
+\setbeamertemplate{itemize subsubitem}{\color{gruvbox-purple}$\circ$}
 
 % ====================
 % 自定义强调命令
 % ====================
-\newcommand{\emphblue}[1]{\textbf{\color{gruvbox-blue-soft}#1}}
-\newcommand{\emphred}[1]{\textbf{\color{gruvbox-red-soft}#1}}
-\newcommand{\emphgreen}[1]{\textbf{\color{gruvbox-green-soft}#1}}
-\newcommand{\empyellow}[1]{\textbf{\color{gruvbox-yellow-soft}#1}}
-\newcommand{\emppurple}[1]{\textbf{\color{gruvbox-purple-soft}#1}}
-\newcommand{\empaqua}[1]{\textbf{\color{gruvbox-aqua-soft}#1}}
-\newcommand{\emporange}[1]{\textbf{\color{gruvbox-orange-soft}#1}}
+\newcommand{\emphblue}[1]{\textbf{\color{gruvbox-blue}#1}}
+\newcommand{\emphred}[1]{\textbf{\color{gruvbox-red}#1}}
+\newcommand{\emphgreen}[1]{\textbf{\color{gruvbox-green}#1}}
+\newcommand{\empyellow}[1]{\textbf{\color{gruvbox-yellow}#1}}
+\newcommand{\emppurple}[1]{\textbf{\color{gruvbox-purple}#1}}
+\newcommand{\empaqua}[1]{\textbf{\color{gruvbox-aqua}#1}}
+\newcommand{\emporange}[1]{\textbf{\color{gruvbox-orange}#1}}
 
 % ====================
 % 标题信息（请修改）
@@ -296,13 +370,13 @@
 
 \begin{frame}{Blocks Showcase}
     \begin{block}{Normal Block}
-        This is a normal block with Gruvbox colors.
+        This is a normal block with Gruvbox colors. Notice the soft shadow, large rounded corners, and the subtle separator line under the title.
     \end{block}
     \begin{alertblock}{Alert Block}
-        This is an alert block with Gruvbox \emphred{red} accent.
+        This is an alert block with Gruvbox \emphred{red} accent. The shadow carries a warm red tint.
     \end{alertblock}
     \begin{exampleblock}{Example Block}
-        This is an example block with Gruvbox \emphgreen{green} accent.
+        This is an example block with Gruvbox \emphgreen{green} accent. The shadow carries a gentle green tint.
     \end{exampleblock}
 \end{frame}
 
