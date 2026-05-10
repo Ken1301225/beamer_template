@@ -97,18 +97,18 @@
 \setbeamercolor{normal text}{fg=gruvbox-fg1,bg=gruvbox-bg0}
 \setbeamercolor{structure}{fg=gruvbox-aqua}
 
-% 标题页
+% 标题页 —— 标题/副标题保留背景框，作者/机构/日期无背景
 \setbeamercolor{title}{fg=gruvbox-fg0,bg=gruvbox-bg2}
 \setbeamercolor{subtitle}{fg=gruvbox-fg0,bg=gruvbox-bg2}
 \setbeamercolor{author}{fg=gruvbox-fg1,bg=}
 \setbeamercolor{institute}{fg=gruvbox-grey0,bg=}
 \setbeamercolor{date}{fg=gruvbox-grey1,bg=}
 
-% 帧标题
-\setbeamercolor{frametitle}{fg=gruvbox-fg0,bg=gruvbox-bg2}
-\setbeamercolor{framesubtitle}{fg=gruvbox-fg0,bg=gruvbox-bg2}
+% 帧标题 —— 透明背景 + 底部细线
+\setbeamercolor{frametitle}{fg=gruvbox-fg0,bg=gruvbox-bg0}
+\setbeamercolor{framesubtitle}{fg=gruvbox-fg0,bg=gruvbox-bg0}
 
-% 块标题 (供 \usebeamercolor 引用)
+% 块标题颜色
 \setbeamercolor{block title}{fg=gruvbox-fg0}
 \setbeamercolor{block body}{fg=gruvbox-fg1}
 \setbeamercolor{block title alerted}{fg=gruvbox-red}
@@ -120,15 +120,19 @@
 \setbeamercolor{alerted text}{fg=gruvbox-red}
 \setbeamercolor{example text}{fg=gruvbox-green}
 
-% 目录与导航
+% Header / Footer 导航颜色
+\setbeamercolor{section in head/foot}{fg=gruvbox-fg0,bg=gruvbox-bg5}
+\setbeamercolor{section in head/foot shaded}{fg=gruvbox-grey1,bg=gruvbox-bg5}
+\setbeamercolor{subsection in head/foot}{fg=gruvbox-aqua,bg=gruvbox-bg5}
+\setbeamercolor{subsection in head/foot shaded}{fg=gruvbox-grey1,bg=gruvbox-bg5}
+\setbeamercolor{author in head/foot}{fg=gruvbox-fg1,bg=gruvbox-bg3}
+\setbeamercolor{title in head/foot}{fg=gruvbox-grey1,bg=gruvbox-bg3}
+\setbeamercolor{date in head/foot}{fg=gruvbox-grey0,bg=gruvbox-bg3}
+\setbeamercolor{page number in head/foot}{fg=gruvbox-fg1,bg=gruvbox-bg3}
+
+% 目录
 \setbeamercolor{section in toc}{fg=gruvbox-fg1}
 \setbeamercolor{subsection in toc}{fg=gruvbox-fg0}
-\setbeamercolor{section in head/foot}{fg=gruvbox-fg1,bg=gruvbox-bg1}
-\setbeamercolor{subsection in head/foot}{fg=gruvbox-grey1,bg=gruvbox-bg1}
-\setbeamercolor{author in head/foot}{fg=gruvbox-fg1,bg=gruvbox-bg1}
-\setbeamercolor{title in head/foot}{fg=gruvbox-grey1,bg=gruvbox-bg1}
-\setbeamercolor{date in head/foot}{fg=gruvbox-grey0,bg=gruvbox-bg1}
-\setbeamercolor{page number in head/foot}{fg=gruvbox-grey1,bg=gruvbox-bg1}
 
 % 列表与枚举
 \setbeamercolor{item}{fg=gruvbox-aqua}
@@ -154,77 +158,77 @@
 \setbeamercolor{qed symbol}{fg=gruvbox-green}
 
 % ====================
-% 取消默认 block 样式，改用方案 C (柔光卡片)
+% Block 模板 —— 左侧强调线风格
 % ====================
 \setbeamertemplate{blocks}[default]
 
-% 普通 Block —— 大圆角、无边框、弥散阴影、标题底部分隔线
 \makeatletter
+% 普通 Block
 \setbeamertemplate{block begin}{%
   \vspace{6pt}%
+  \noindent%
   \begin{tcolorbox}[
     enhanced,
-    colback=gruvbox-bg1,
-    colframe=gruvbox-bg1,
-    arc=8pt,
-    boxrule=0pt,
-    left=10pt, right=10pt, top=6pt, bottom=10pt,
+    colback=gruvbox-bg0,
+    colframe=gruvbox-bg0,
     frame hidden,
-    drop fuzzy shadow={gruvbox-bg3!40},
+    borderline west={3pt}{0pt}{gruvbox-fg0},
+    left=10pt, right=4pt, top=4pt, bottom=4pt,
+    boxrule=0pt, arc=0pt,
     before skip=0pt, after skip=0pt
   ]
   {\usebeamerfont{block title}\usebeamercolor[fg]{block title}\insertblocktitle}%
-  \vspace{3pt}%
-  {\color{gruvbox-bg3}\hrule height 1pt}%
-  \vspace{5pt}%
+  \vspace{2pt}%
+  {\color{gruvbox-bg4}\hrule height 1pt}%
+  \vspace{4pt}%
 }
 \setbeamertemplate{block end}{%
   \end{tcolorbox}%
   \vspace{6pt}%
 }
 
-% Alert Block —— 红色调阴影
+% Alert Block
 \setbeamertemplate{block alerted begin}{%
   \vspace{6pt}%
+  \noindent%
   \begin{tcolorbox}[
     enhanced,
-    colback=gruvbox-bg1,
-    colframe=gruvbox-bg1,
-    arc=8pt,
-    boxrule=0pt,
-    left=10pt, right=10pt, top=6pt, bottom=10pt,
+    colback=gruvbox-bg0,
+    colframe=gruvbox-bg0,
     frame hidden,
-    drop fuzzy shadow={gruvbox-red!25},
+    borderline west={3pt}{0pt}{gruvbox-red},
+    left=10pt, right=4pt, top=4pt, bottom=4pt,
+    boxrule=0pt, arc=0pt,
     before skip=0pt, after skip=0pt
   ]
   {\usebeamerfont{block title}\usebeamercolor[fg]{block title alerted}\insertblocktitle}%
-  \vspace{3pt}%
+  \vspace{2pt}%
   {\color{gruvbox-red!50}\hrule height 1pt}%
-  \vspace{5pt}%
+  \vspace{4pt}%
 }
 \setbeamertemplate{block alerted end}{%
   \end{tcolorbox}%
   \vspace{6pt}%
 }
 
-% Example Block —— 绿色调阴影
+% Example Block
 \setbeamertemplate{block example begin}{%
   \vspace{6pt}%
+  \noindent%
   \begin{tcolorbox}[
     enhanced,
-    colback=gruvbox-bg1,
-    colframe=gruvbox-bg1,
-    arc=8pt,
-    boxrule=0pt,
-    left=10pt, right=10pt, top=6pt, bottom=10pt,
+    colback=gruvbox-bg0,
+    colframe=gruvbox-bg0,
     frame hidden,
-    drop fuzzy shadow={gruvbox-green!30},
+    borderline west={3pt}{0pt}{gruvbox-green},
+    left=10pt, right=4pt, top=4pt, bottom=4pt,
+    boxrule=0pt, arc=0pt,
     before skip=0pt, after skip=0pt
   ]
   {\usebeamerfont{block title}\usebeamercolor[fg]{block title example}\insertblocktitle}%
-  \vspace{3pt}%
+  \vspace{2pt}%
   {\color{gruvbox-green!50}\hrule height 1pt}%
-  \vspace{5pt}%
+  \vspace{4pt}%
 }
 \setbeamertemplate{block example end}{%
   \end{tcolorbox}%
@@ -240,16 +244,55 @@
 \setbeamertemplate{enumerate subsubitem}[square]
 
 % ====================
-% 帧标题模板
+% 帧标题模板 —— 透明背景 + 底部细线
 % ====================
 \setbeamertemplate{frametitle}{
-  \begin{beamercolorbox}[wd=\paperwidth,ht=2.4ex,dp=1ex,leftskip=0.3cm,rightskip=0.3cm]{frametitle}
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1ex,leftskip=0.3cm,rightskip=0.3cm]{frametitle}
     \usebeamerfont{frametitle}\insertframetitle
     \ifx\insertframesubtitle\@empty
     \else
-      {\hspace{0.6em}\usebeamerfont{framesubtitle}\color{gruvbox-grey1}\insertframesubtitle}
+      {\hspace{0.6em}\usebeamerfont{framesubtitle}\color{gruvbox-fg0}\insertframesubtitle}
     \fi
   \end{beamercolorbox}
+  \vskip-1pt%
+  {\color{gruvbox-bg4}\hrule height 1pt}%
+}
+
+% ====================
+% Header 模板 —— bg5 背景 + aqua 底线
+% ====================
+\setbeamertemplate{headline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{section in head/foot}%
+      \usebeamerfont{section in head/foot}\insertsectionnavigationhorizontal{.5\paperwidth}{\hskip0pt plus1filll}{}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsection in head/foot}%
+      \usebeamerfont{subsection in head/foot}\insertsubsectionnavigationhorizontal{.5\paperwidth}{}{\hskip0pt plus1filll}%
+    \end{beamercolorbox}%
+  }%
+  \vskip-1pt%
+  {\color{gruvbox-aqua}\hrule height 2pt}%
+}
+
+% ====================
+% Footer 模板 —— bg4 顶线 + bg3 背景
+% ====================
+\setbeamertemplate{footline}{%
+  {\color{gruvbox-bg4}\hrule height 1pt}%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+      \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}%
+      \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}%
+    \end{beamercolorbox}%
+  }%
 }
 
 % ====================
@@ -263,23 +306,21 @@
 % 字体与布局调整
 % ====================
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{blocks}[default]
 \usefonttheme{professionalfonts}
 \useinnertheme{rounded}
 \useoutertheme{infolines}
 
 % ====================
-% 自定义 tcolorbox (Gruvbox Light)
+% 自定义 eblock (左侧强调线风格)
 % ====================
 \newtcolorbox{eblock}[1][]{
     enhanced,
-    colback=gruvbox-bg1,
-    colframe=gruvbox-bg1,
-    arc=8pt,
-    boxrule=0pt,
-    left=10pt, right=10pt, top=6pt, bottom=10pt,
+    colback=gruvbox-bg0,
+    colframe=gruvbox-bg0,
     frame hidden,
-    drop fuzzy shadow={gruvbox-bg3!40},
+    borderline west={3pt}{0pt}{gruvbox-fg0},
+    left=10pt, right=4pt, top=4pt, bottom=4pt,
+    boxrule=0pt, arc=0pt,
     #1
 }
 
@@ -370,13 +411,13 @@
 
 \begin{frame}{Blocks Showcase}
     \begin{block}{Normal Block}
-        This is a normal block with Gruvbox colors. Notice the soft shadow, large rounded corners, and the subtle separator line under the title.
+        This is a normal block with left accent line style. No background fill, no shadow — just a clean vertical line and a subtle separator under the title.
     \end{block}
     \begin{alertblock}{Alert Block}
-        This is an alert block with Gruvbox \emphred{red} accent. The shadow carries a warm red tint.
+        This is an alert block with Gruvbox \emphred{red} left accent line and title.
     \end{alertblock}
     \begin{exampleblock}{Example Block}
-        This is an example block with Gruvbox \emphgreen{green} accent. The shadow carries a gentle green tint.
+        This is an example block with Gruvbox \emphgreen{green} left accent line and title.
     \end{exampleblock}
 \end{frame}
 
