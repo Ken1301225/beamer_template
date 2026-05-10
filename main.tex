@@ -251,14 +251,12 @@
 \setbeamertemplate{enumerate subsubitem}[square]
 
 % ====================
-% 帧标题模板 —— 分隔线 + 大标题
+% 帧标题模板 —— 大标题（无红线）
 % ====================
 \setbeamertemplate{frametitle}{%
-  \vspace{6pt}%
+  \vspace{4pt}%
   \begin{beamercolorbox}[wd=\paperwidth,sep=0pt,leftskip=0.7cm,rightskip=0.7cm]{normal text}
-    {\color{w-accent}\rule{\dimexpr\paperwidth-1.4cm\relax}{1.4pt}}\\[-0.2ex]
-    \vspace{7pt}%
-    \begin{minipage}[t]{0.84\textwidth}
+    \begin{minipage}[t]{0.88\textwidth}
       {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle}%
       \ifx\insertframesubtitle\@empty
       \else
@@ -271,48 +269,37 @@
 }
 
 % ====================
-% Header 模板 —— 顶线 + 当前章节名
-% ====================
-\setbeamertemplate{headline}{%
-  {\color{w-ink}\hrule height 1.2pt}%
-  \vskip1pt%
-  \leavevmode%
-  \hbox to \paperwidth{%
-    \hskip0.5cm%
-    {\usebeamerfont{section in head}\color{w-accent}\insertsection}%
-    \hfill
-    \hskip0.5cm%
-  }%
-  \vskip2pt%
-  {\color{w-line}\hrule height 0.4pt}%
-}
-
-% ====================
-% Footer 模板 —— 帧进度条 + 页码
+% Header 模板 —— 进度条 + 章节名 + 页码
 % ====================
 \makeatletter
-\setbeamertemplate{footline}{%
-  \vskip0pt%
+\setbeamertemplate{headline}{%
   \begin{tikzpicture}[remember picture,overlay]
-    \fill[w-line] (0,0) rectangle (\the\paperwidth, 3.5pt);
+    \fill[w-line] (0,0) rectangle (\the\paperwidth, 3pt);
     \ifnum\inserttotalframenumber>0%
       \ifnum\insertframenumber>0%
         \pgfmathsetmacro{\progress}{\insertframenumber/\inserttotalframenumber}%
-        \fill[w-accent] (0,0) rectangle ({\progress*\the\paperwidth}, 3.5pt);
+        \fill[w-accent] (0,0) rectangle ({\progress*\the\paperwidth}, 3pt);
       \fi
     \fi
   \end{tikzpicture}%
   \vskip4pt%
+  \leavevmode%
   \hbox to \paperwidth{%
     \hskip0.5cm%
-    {\usebeamerfont{date}\color{w-subtext}\insertsection}%
+    {\usebeamerfont{section in head}\color{w-subtext}\insertsection}%
     \hfill
     {\usebeamerfont{date}\color{w-accent}\insertframenumber\,/\,\inserttotalframenumber}%
     \hskip0.5cm%
   }%
   \vskip2pt%
+  {\color{w-line}\hrule height 0.3pt}%
 }
 \makeatother
+
+% ====================
+% Footer 模板 —— 空底部
+% ====================
+\setbeamertemplate{footline}{}
 
 % ====================
 % 取消导航符号
