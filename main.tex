@@ -115,8 +115,8 @@
 % 块标题
 \setbeamercolor{block title}{fg=w-ink}
 \setbeamercolor{block body}{fg=w-text}
-\setbeamercolor{block title alerted}{fg=w-card}
-\setbeamercolor{block body alerted}{fg=w-card}
+\setbeamercolor{block title alerted}{fg=white}
+\setbeamercolor{block body alerted}{fg=white}
 \setbeamercolor{block title example}{fg=w-ink}
 \setbeamercolor{block body example}{fg=w-text}
 
@@ -198,7 +198,7 @@
   \vspace{5pt}%
 }
 
-% Alert Block
+% Alert Block —— 红色高亮卡片
 \setbeamertemplate{block alerted begin}{%
   \vspace{4pt}%
   \noindent%
@@ -213,9 +213,9 @@
     drop fuzzy shadow={w-accent!25},
     before skip=0pt, after skip=0pt
   ]
-  {\usebeamerfont{block title}\usebeamercolor[fg]{block title alerted}\insertblocktitle}%
+  {\usebeamerfont{block title}\color{white}\insertblocktitle}%
   \vspace{3pt}%
-  {\color{w-card!60}\hrule height 1pt}%
+  {\color{white!50}\hrule height 0.6pt}%
   \vspace{6pt}%
 }
 \setbeamertemplate{block alerted end}{%
@@ -379,7 +379,7 @@
     boxrule=0pt,
     left=12pt, right=12pt, top=8pt, bottom=12pt,
     drop fuzzy shadow={w-accent!25},
-    coltitle=w-card,
+    coltitle=white,
     fonttitle=\bfseries\normalsize,
     title=#1
 }
