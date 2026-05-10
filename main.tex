@@ -1,4 +1,3 @@
-% !TEX program = xelatex    
 \documentclass[aspectratio=169]{beamer}
 
 % ====================
@@ -42,22 +41,33 @@
 \usepackage{algpseudocode}
 
 % ====================
-% 配色定义 (提取自参考图)
+% 配色定义 (Desert Rose 风格升级)
 % ====================
-\definecolor{warm-bg}{HTML}{F5F0EB}       % 页面底色 — 暖白
-\definecolor{warm-card}{HTML}{FFFFFF}     % 卡片背景 — 纯白
-\definecolor{warm-text}{HTML}{2C2C2C}     % 主文字 — 近黑
-\definecolor{warm-subtext}{HTML}{6B6B6B}  % 次要文字 — 灰
-\definecolor{warm-red}{HTML}{C84B31}      % 强调红 — 砖红
-\definecolor{warm-line}{HTML}{E8E3DE}     % 分隔线 — 浅米色
-\definecolor{warm-shadow}{HTML}{D5D0CB}   % 阴影色
+% 核心底色
+\definecolor{w-bg}{HTML}{F6F1EA}         % 页面底色 — 暖羊皮纸
+\definecolor{w-card}{HTML}{FFFCF9}        % 卡片白 — 微暖白
+\definecolor{w-surface}{HTML}{EFE8DF}     % 面板色 — 比之前深一点，拉开层次
+\definecolor{w-line}{HTML}{E0D5C9}        % 分隔线 — 温暖米线
+\definecolor{w-shadow}{HTML}{C5BAA8}      % 阴影色 — 暖棕灰
 
-% 辅助色 (用于列表、强调)
-\definecolor{warm-green}{HTML}{3A7D44}
-\definecolor{warm-blue}{HTML}{2B6CB0}
-\definecolor{warm-yellow}{HTML}{C07D1B}
-\definecolor{warm-purple}{HTML}{7B4F9B}
-\definecolor{warm-teal}{HTML}{2D8A8A}
+% 文字色阶
+\definecolor{w-text}{HTML}{2C2420}        % 主文字 — 深暖黑
+\definecolor{w-subtext}{HTML}{7A6E64}     % 次要文字 — 暖灰棕
+\definecolor{w-muted}{HTML}{A89E94}        % 静默文字 — 浅暖灰
+
+% 强调色系 (Desert Rose inspired)
+\definecolor{w-accent}{HTML}{C0533A}       % 主强调 — 精炼陶土红
+\definecolor{w-clay}{HTML}{B07D6B}        % 粘土色 — 柔和暖棕
+\definecolor{w-rose}{HTML}{D4A088}        % 灰玫色 — Dusty Rose
+\definecolor{w-sand}{HTML}{DCC5A8}        % 沙色 — 暖米金
+\definecolor{w-ink}{HTML}{2E3A46}         % 墨蓝灰 — 标题/深度色
+
+% 辅助色
+\definecolor{w-green}{HTML}{4D7A5A}
+\definecolor{w-blue}{HTML}{4E6FAE}
+\definecolor{w-yellow}{HTML}{B7862D}
+\definecolor{w-purple}{HTML}{7B639A}
+\definecolor{w-teal}{HTML}{4D7F83}
 
 % ====================
 % 算法名称
@@ -65,71 +75,73 @@
 \renewcommand{\algorithmname}{Algorithm}
 
 % ====================
-% 代码高亮设置 (温暖风格)
+% 代码高亮设置
 % ====================
 \lstset{
-    basicstyle=\ttfamily\small\color{warm-text},
-    keywordstyle=\color{warm-red}\bfseries,
-    commentstyle=\color{warm-subtext}\itshape,
-    stringstyle=\color{warm-green},
+    basicstyle=\ttfamily\scriptsize\color{w-text},
+    keywordstyle=\color{w-accent}\bfseries,
+    commentstyle=\color{w-subtext}\itshape,
+    stringstyle=\color{w-blue},
     numbers=left,
-    numberstyle=\tiny\color{warm-subtext},
+    numberstyle=\tiny\color{w-subtext},
     frame=single,
     breaklines=true,
     showstringspaces=false,
-    rulecolor=\color{warm-line},
-    backgroundcolor=\color{warm-card},
+    columns=fullflexible,
+    keepspaces=true,
+    rulecolor=\color{w-line},
+    backgroundcolor=\color{w-surface},
     morekeywords={\documentclass,\usepackage,\begin,\end,\section,\subsection,\frametitle,\title,\author,\institute,\date,\tableofcontents,\printbibliography}
 }
 
 % ====================
 % Beamer 全局配色
 % ====================
-\setbeamercolor{normal text}{fg=warm-text,bg=warm-bg}
-\setbeamercolor{structure}{fg=warm-red}
+\setbeamercolor{normal text}{fg=w-text,bg=w-bg}
+\setbeamercolor{structure}{fg=w-accent}
 
 % 标题页
-\setbeamercolor{title}{fg=warm-text}
-\setbeamercolor{subtitle}{fg=warm-subtext}
-\setbeamercolor{author}{fg=warm-subtext}
-\setbeamercolor{institute}{fg=warm-subtext}
-\setbeamercolor{date}{fg=warm-subtext}
+\setbeamercolor{title}{fg=w-ink}
+\setbeamercolor{subtitle}{fg=w-subtext}
+\setbeamercolor{author}{fg=w-subtext}
+\setbeamercolor{institute}{fg=w-muted}
+\setbeamercolor{date}{fg=w-subtext}
 
 % 帧标题
-\setbeamercolor{frametitle}{fg=warm-text}
-\setbeamercolor{framesubtitle}{fg=warm-subtext}
+\setbeamercolor{frametitle}{fg=w-ink}
+\setbeamercolor{framesubtitle}{fg=w-subtext}
 
 % 块标题
-\setbeamercolor{block title}{fg=warm-text}
-\setbeamercolor{block body}{fg=warm-text}
-\setbeamercolor{block title alerted}{fg=warm-card}
-\setbeamercolor{block body alerted}{fg=warm-card}
-\setbeamercolor{block title example}{fg=warm-text}
-\setbeamercolor{block body example}{fg=warm-text}
+\setbeamercolor{block title}{fg=w-ink}
+\setbeamercolor{block body}{fg=w-text}
+\setbeamercolor{block title alerted}{fg=w-card}
+\setbeamercolor{block body alerted}{fg=w-card}
+\setbeamercolor{block title example}{fg=w-ink}
+\setbeamercolor{block body example}{fg=w-text}
 
 % 强调文字
-\setbeamercolor{alerted text}{fg=warm-red}
-\setbeamercolor{example text}{fg=warm-green}
+\setbeamercolor{alerted text}{fg=w-accent}
+\setbeamercolor{example text}{fg=w-green}
 
 % 目录
-\setbeamercolor{section in toc}{fg=warm-text}
-\setbeamercolor{subsection in toc}{fg=warm-subtext}
+\setbeamercolor{section in toc}{fg=w-text}
+\setbeamercolor{subsection in toc}{fg=w-subtext}
 
 % 列表与枚举
-\setbeamercolor{item}{fg=warm-red}
-\setbeamercolor{subitem}{fg=warm-teal}
-\setbeamercolor{subsubitem}{fg=warm-purple}
-\setbeamercolor{item projected}{fg=warm-card,bg=warm-red}
-\setbeamercolor{subitem projected}{fg=warm-card,bg=warm-teal}
-\setbeamercolor{subsubitem projected}{fg=warm-card,bg=warm-purple}
+\setbeamercolor{item}{fg=w-accent}
+\setbeamercolor{subitem}{fg=w-teal}
+\setbeamercolor{subsubitem}{fg=w-purple}
+\setbeamercolor{item projected}{fg=w-card,bg=w-accent}
+\setbeamercolor{subitem projected}{fg=w-card,bg=w-teal}
+\setbeamercolor{subsubitem projected}{fg=w-card,bg=w-purple}
 
 % 参考文献
-\setbeamercolor{bibliography entry author}{fg=warm-text}
-\setbeamercolor{bibliography entry title}{fg=warm-red}
-\setbeamercolor{bibliography entry journal}{fg=warm-subtext}
-\setbeamercolor{bibliography item}{fg=warm-red}
-\setbeamercolor{caption}{fg=warm-subtext}
-\setbeamercolor{caption name}{fg=warm-red}
+\setbeamercolor{bibliography entry author}{fg=w-text}
+\setbeamercolor{bibliography entry title}{fg=w-accent}
+\setbeamercolor{bibliography entry journal}{fg=w-subtext}
+\setbeamercolor{bibliography item}{fg=w-accent}
+\setbeamercolor{caption}{fg=w-subtext}
+\setbeamercolor{caption name}{fg=w-accent}
 
 % ====================
 % 字体设置
@@ -137,91 +149,97 @@
 \setbeamerfont{frametitle}{size=\LARGE,series=\bfseries}
 \setbeamerfont{framesubtitle}{size=\normalsize,series=\normalfont}
 \setbeamerfont{block title}{size=\normalsize,series=\bfseries}
+\setbeamerfont{block body}{size=\small}
 \setbeamerfont{title}{size=\huge,series=\bfseries}
 \setbeamerfont{subtitle}{size=\normalsize,series=\normalfont}
 \setbeamerfont{author}{size=\normalsize}
 \setbeamerfont{institute}{size=\small}
 \setbeamerfont{date}{size=\small}
+\setbeamerfont{section in head}{size=\scriptsize,series=\bfseries}
+\setbeamerfont{subsection in head}{size=\tiny}
+\setbeamersize{text margin left=0.65cm,text margin right=0.65cm}
 
 % ====================
-% Block 模板 —— 白色圆角卡片
+% Block 模板 —— 柔和纸感卡片
 % ====================
 \setbeamertemplate{blocks}[default]
 
 \makeatletter
-% 普通 Block —— 白色卡片
+% 普通 Block
 \setbeamertemplate{block begin}{%
   \vspace{4pt}%
   \noindent%
   \begin{tcolorbox}[
     enhanced,
-    colback=warm-card,
-    colframe=warm-card,
+    colback=w-surface,
+    colframe=w-line,
     frame hidden,
     arc=6pt,
     boxrule=0pt,
-    left=12pt, right=12pt, top=8pt, bottom=12pt,
-    drop fuzzy shadow={warm-shadow!50},
+    left=10pt, right=10pt, top=7pt, bottom=9pt,
+    borderline west={2pt}{0pt}{w-accent!75},
+    drop fuzzy shadow={w-shadow!35},
     before skip=0pt, after skip=0pt
   ]
   {\usebeamerfont{block title}\usebeamercolor[fg]{block title}\insertblocktitle}%
   \vspace{3pt}%
-  {\color{warm-line}\hrule height 1pt}%
+  {\color{w-line}\hrule height 1pt}%
   \vspace{6pt}%
 }
 \setbeamertemplate{block end}{%
   \end{tcolorbox}%
-  \vspace{8pt}%
+  \vspace{5pt}%
 }
 
-% Alert Block —— 红色高亮卡片 (白字)
+% Alert Block
 \setbeamertemplate{block alerted begin}{%
   \vspace{4pt}%
   \noindent%
   \begin{tcolorbox}[
     enhanced,
-    colback=warm-red,
-    colframe=warm-red,
+    colback=w-accent,
+    colframe=w-accent,
     frame hidden,
     arc=6pt,
     boxrule=0pt,
-    left=12pt, right=12pt, top=8pt, bottom=12pt,
-    drop fuzzy shadow={warm-red!30},
+    left=10pt, right=10pt, top=7pt, bottom=9pt,
+    drop fuzzy shadow={w-accent!25},
     before skip=0pt, after skip=0pt
   ]
   {\usebeamerfont{block title}\usebeamercolor[fg]{block title alerted}\insertblocktitle}%
   \vspace{3pt}%
-  {\color{warm-card!60}\hrule height 1pt}%
+  {\color{w-card!60}\hrule height 1pt}%
   \vspace{6pt}%
 }
 \setbeamertemplate{block alerted end}{%
   \end{tcolorbox}%
-  \vspace{8pt}%
+  \vspace{5pt}%
 }
 
-% Example Block —— 白色卡片 (绿色标题)
+% Example Block
 \setbeamertemplate{block example begin}{%
   \vspace{4pt}%
   \noindent%
   \begin{tcolorbox}[
     enhanced,
-    colback=warm-card,
-    colframe=warm-card,
+    colback=w-surface,
+    colframe=w-line,
     frame hidden,
     arc=6pt,
     boxrule=0pt,
-    left=12pt, right=12pt, top=8pt, bottom=12pt,
-    drop fuzzy shadow={warm-shadow!50},
+    left=10pt, right=10pt, top=7pt, bottom=9pt,
+    borderline west={2pt}{0pt}{w-teal!80},
+    drop fuzzy shadow={w-shadow!35},
     before skip=0pt, after skip=0pt
   ]
-  {\usebeamerfont{block title}\color{warm-green}\insertblocktitle}%
+  {\usebeamerfont{block title}\color{w-teal}\insertblocktitle}%
   \vspace{3pt}%
-  {\color{warm-line}\hrule height 1pt}%
+  {\color{w-line}\hrule height 1pt}%
   \vspace{6pt}%
 }
 \setbeamertemplate{block example end}{%
   \end{tcolorbox}%
-  \vspace{8pt}%
+  \vspace{5pt}%
 }
 \makeatother
 
@@ -233,39 +251,68 @@
 \setbeamertemplate{enumerate subsubitem}[square]
 
 % ====================
-% 帧标题模板 —— 左上角大标题
+% 帧标题模板 —— 分隔线 + 大标题
 % ====================
 \setbeamertemplate{frametitle}{%
-  \vspace{12pt}%
-  \begin{minipage}[t]{0.75\textwidth}
-    {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle}%
-    \ifx\insertframesubtitle\@empty
-    \else
-      \\[4pt]%
-      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}%
-    \fi
-  \end{minipage}%
-  \vspace{8pt}%
+  \vspace{6pt}%
+  \begin{beamercolorbox}[wd=\paperwidth,sep=0pt,leftskip=0.7cm,rightskip=0.7cm]{normal text}
+    {\color{w-accent}\rule{\dimexpr\paperwidth-1.4cm\relax}{1.4pt}}\\[-0.2ex]
+    \vspace{7pt}%
+    \begin{minipage}[t]{0.84\textwidth}
+      {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle}%
+      \ifx\insertframesubtitle\@empty
+      \else
+        \\[4pt]%
+        {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}%
+      \fi
+    \end{minipage}%
+    \vspace{5pt}%
+  \end{beamercolorbox}%
 }
 
 % ====================
-% Header 模板 —— 顶部红色装饰线
+% Header 模板 —— 顶线 + 当前章节名
 % ====================
 \setbeamertemplate{headline}{%
-  {\color{warm-red}\hrule height 2.5pt}%
+  {\color{w-ink}\hrule height 1.2pt}%
+  \vskip1pt%
+  \leavevmode%
+  \hbox to \paperwidth{%
+    \hskip0.5cm%
+    {\usebeamerfont{section in head}\color{w-accent}\insertsection}%
+    \hfill
+    \hskip0.5cm%
+  }%
+  \vskip2pt%
+  {\color{w-line}\hrule height 0.4pt}%
 }
 
 % ====================
-% Footer 模板 —— 极简页码
+% Footer 模板 —— 帧进度条 + 页码
 % ====================
+\makeatletter
 \setbeamertemplate{footline}{%
-  \leavevmode%
-  \hbox{%
-    \begin{beamercolorbox}[wd=\paperwidth,ht=2ex,dp=1ex,left,leftskip=0.4cm]{normal text}%
-      \usebeamerfont{date}\color{warm-subtext}\insertframenumber\,\,/\,\,\inserttotalframenumber%
-    \end{beamercolorbox}%
+  \vskip0pt%
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[w-line] (0,0) rectangle (\the\paperwidth, 3.5pt);
+    \ifnum\inserttotalframenumber>0%
+      \ifnum\insertframenumber>0%
+        \pgfmathsetmacro{\progress}{\insertframenumber/\inserttotalframenumber}%
+        \fill[w-accent] (0,0) rectangle ({\progress*\the\paperwidth}, 3.5pt);
+      \fi
+    \fi
+  \end{tikzpicture}%
+  \vskip4pt%
+  \hbox to \paperwidth{%
+    \hskip0.5cm%
+    {\usebeamerfont{date}\color{w-subtext}\insertsection}%
+    \hfill
+    {\usebeamerfont{date}\color{w-accent}\insertframenumber\,/\,\inserttotalframenumber}%
+    \hskip0.5cm%
   }%
+  \vskip2pt%
 }
+\makeatother
 
 % ====================
 % 取消导航符号
@@ -280,55 +327,56 @@
   {\end{frame}}
 
 % ====================
-% 自定义 eblock (白色圆角卡片)
+% 自定义 eblock
 % ====================
 \newtcolorbox{eblock}[1][]{
     enhanced,
-    colback=warm-card,
-    colframe=warm-card,
+    colback=w-surface,
+    colframe=w-line,
     frame hidden,
     arc=6pt,
     boxrule=0pt,
-    left=12pt, right=12pt, top=8pt, bottom=12pt,
-    drop fuzzy shadow={warm-shadow!50},
+    left=10pt, right=10pt, top=7pt, bottom=9pt,
+    borderline west={2pt}{0pt}{w-blue!70},
+    drop fuzzy shadow={w-shadow!35},
     #1
 }
 
 % ====================
-% 红色高亮卡片 (alert 风格)
+% 红色高亮卡片
 % ====================
 \newtcolorbox{redcard}[1][]{
     enhanced,
-    colback=warm-red,
-    colframe=warm-red,
+    colback=w-accent,
+    colframe=w-accent,
     frame hidden,
     arc=6pt,
     boxrule=0pt,
     left=12pt, right=12pt, top=8pt, bottom=12pt,
-    drop fuzzy shadow={warm-red!30},
-    coltitle=warm-card,
+    drop fuzzy shadow={w-accent!25},
+    coltitle=w-card,
     fonttitle=\bfseries\normalsize,
     title=#1
 }
 
 % ====================
-% 红色标签/徽章
+% 标签/徽章
 % ====================
 \newcommand{\tagred}[1]{%
   \tcbox[
-    enhanced, colback=warm-red, colframe=warm-red,
+    enhanced, colback=w-accent, colframe=w-accent,
     arc=3pt, boxrule=0pt,
     left=6pt, right=6pt, top=1pt, bottom=1pt,
-    fontupper=\sffamily\scriptsize\color{warm-card}
+    fontupper=\sffamily\scriptsize\color{w-card}
   ]{#1}%
 }
 
 \newcommand{\taggray}[1]{%
   \tcbox[
-    enhanced, colback=warm-line, colframe=warm-line,
+    enhanced, colback=w-surface, colframe=w-line,
     arc=3pt, boxrule=0pt,
     left=6pt, right=6pt, top=1pt, bottom=1pt,
-    fontupper=\sffamily\scriptsize\color{warm-text}
+    fontupper=\sffamily\scriptsize\color{w-text}
   ]{#1}%
 }
 
@@ -338,7 +386,7 @@
 \setbeamertemplate{section in toc}{
   \leavevmode\leftskip=1em%
   \tikz[baseline=-0.5ex]{
-    \node[draw=warm-red, fill=warm-red!10, circle, inner sep=1pt, text=warm-text, font=\bfseries\footnotesize]
+    \node[draw=w-accent, fill=w-accent!12, circle, inner sep=1pt, text=w-ink, font=\bfseries\footnotesize]
       {\inserttocsectionnumber};
   }\hspace{0.6em}%
   \inserttocsection
@@ -347,7 +395,7 @@
 \setbeamertemplate{subsection in toc}{
   \leavevmode\leftskip=2.5em%
   \tikz[baseline=-0.5ex]{
-    \node[draw=warm-teal, fill=warm-teal!10, circle, inner sep=0.7pt, text=warm-text, font=\scriptsize]
+    \node[draw=w-teal, fill=w-teal!10, circle, inner sep=0.7pt, text=w-ink, font=\scriptsize]
       {\inserttocsubsectionnumber};
   }\hspace{0.6em}%
   \inserttocsubsection\par
@@ -356,39 +404,72 @@
 % ====================
 % 项目符号样式
 % ====================
-\setbeamertemplate{itemize item}{\color{warm-red}$\bullet$}
-\setbeamertemplate{itemize subitem}{\color{warm-teal}$\bullet$}
-\setbeamertemplate{itemize subsubitem}{\color{warm-purple}$\circ$}
+\setbeamertemplate{itemize item}{\color{w-accent}$\bullet$}
+\setbeamertemplate{itemize subitem}{\color{w-teal}$\bullet$}
+\setbeamertemplate{itemize subsubitem}{\color{w-purple}$\circ$}
 
 % ====================
 % 自定义强调命令
 % ====================
-\newcommand{\emphred}[1]{\textbf{\color{warm-red}#1}}
-\newcommand{\emphgreen}[1]{\textbf{\color{warm-green}#1}}
-\newcommand{\emphblue}[1]{\textbf{\color{warm-blue}#1}}
-\newcommand{\empyellow}[1]{\textbf{\color{warm-yellow}#1}}
-\newcommand{\emppurple}[1]{\textbf{\color{warm-purple}#1}}
-\newcommand{\empteal}[1]{\textbf{\color{warm-teal}#1}}
+\newcommand{\emphred}[1]{\textbf{\color{w-accent}#1}}
+\newcommand{\emphgreen}[1]{\textbf{\color{w-green}#1}}
+\newcommand{\emphblue}[1]{\textbf{\color{w-blue}#1}}
+\newcommand{\empyellow}[1]{\textbf{\color{w-yellow}#1}}
+\newcommand{\emppurple}[1]{\textbf{\color{w-purple}#1}}
+\newcommand{\empteal}[1]{\textbf{\color{w-teal}#1}}
+\newcommand{\emphclay}[1]{\textbf{\color{w-clay}#1}}
+\newcommand{\emphrose}[1]{\textbf{\color{w-rose}#1}}
 
 % ====================
 % 标题信息（请修改）
 % ====================
 \title{Presentation Title}
+\subtitle{Clean academic slides with a warm editorial palette}
 \author{Your Name}
 \institute{Your Institution}
 \date{\today}
 
-% 添加logo（可选）
 % \logo{\includegraphics[height=0.8cm]{logo.png}}
 
 \begin{document}
 
+% ====================
 % 标题页
-\begin{frame}
+% ====================
+\setbeamertemplate{title page}{%
+    \vspace*{1.2cm}
+    {\color{w-ink}\rule{0.55\paperwidth}{1.8pt}\par}
+    \vspace{0.8cm}
+    {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+    \vspace{0.35cm}
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
+    \vspace{0.9cm}
+    \begin{tcolorbox}[
+        enhanced,
+        colback=w-card,
+        colframe=w-line,
+        frame hidden,
+        arc=6pt,
+        boxrule=0pt,
+        left=12pt,right=12pt,top=10pt,bottom=10pt,
+        borderline west={2pt}{0pt}{w-accent!75},
+        drop fuzzy shadow={w-shadow!35},
+        width=0.68\paperwidth
+    ]
+        {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}
+        \vspace{2pt}
+        {\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}
+        \vspace{2pt}
+        {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}
+    \end{tcolorbox}
+}
+\begin{frame}[plain]
     \titlepage
 \end{frame}
 
+% ====================
 % 目录页
+% ====================
 \begin{frame}{目录}
     \tableofcontents
 \end{frame}
@@ -417,42 +498,49 @@
 \end{autoframe}
 
 \begin{frame}{LLM知识库的\\工程化蓝图}
-    \framesubtitle{从「基础常识、热门方向、讨论范围、探索」到第三大脑——这是短期实现 RAG/AI 的持续应用的一条路线图。}
-    \vspace{8pt}
-    \begin{columns}[t]
-        \begin{column}{0.24\textwidth}
+    \framesubtitle{从「基础常识、热门方向、讨论范围、探索」到第三大脑}
+    \vspace{3pt}
+    \begin{columns}[t,onlytextwidth]
+        \begin{column}{0.235\textwidth}
             \begin{block}{采集}
-                多模态采集、Voice 解析、多文档导入
+                \scriptsize 多模态采集、Voice 解析、多文档导入
             \end{block}
         \end{column}
-        \begin{column}{0.24\textwidth}
+        \begin{column}{0.235\textwidth}
             \begin{block}{清理}
-                去重清洗、\LaTeX 解析、结构解析
+                \scriptsize 去重清洗、\LaTeX 解析、结构解析
             \end{block}
         \end{column}
-        \begin{column}{0.24\textwidth}
+        \begin{column}{0.235\textwidth}
             \begin{alertblock}{Wiki 化}
-                知识库结构化、实体、关系抽取与归一
+                \scriptsize 知识库结构化、实体、关系抽取与归一
             \end{alertblock}
         \end{column}
-        \begin{column}{0.24\textwidth}
+        \begin{column}{0.235\textwidth}
             \begin{block}{使用}
-                Agent 知识问答、提示、流式
+                \scriptsize Agent 知识问答、提示、流式
             \end{block}
         \end{column}
     \end{columns}
 \end{frame}
 
-\begin{frame}{Blocks Showcase}
-    \begin{block}{Normal Block}
-        White rounded card with subtle shadow. Clean and modern design.
-    \end{block}
-    \begin{alertblock}{Highlighted Block}
-        Red card with white text — the highlight style from your reference image.
-    \end{alertblock}
-    \begin{exampleblock}{Example Block}
-        White card with \emphgreen{green} title accent.
-    \end{exampleblock}
+\begin{frame}[t]{Blocks Showcase}
+    \small
+    \begin{columns}[t,onlytextwidth]
+        \begin{column}{0.49\textwidth}
+            \begin{block}{Normal Block}
+                Soft paper-like surface with a restrained left accent.
+            \end{block}
+            \begin{exampleblock}{Example Block}
+                Muted secondary panel with \empteal{teal} emphasis.
+            \end{exampleblock}
+        \end{column}
+        \begin{column}{0.49\textwidth}
+            \begin{alertblock}{Highlighted Block}
+                High-contrast card for key warnings.
+            \end{alertblock}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{Code Highlighting}
@@ -463,8 +551,19 @@ def hello_world(name):
     print(greeting)
     return greeting
 
-hello_world("Reference")
+hello_world("Desert Rose")
     \end{lstlisting}
+\end{frame}
+
+\section{Details}
+\begin{frame}{Details}
+    Additional content here to demonstrate the progress bar
+    spanning multiple sections.
+\end{frame}
+
+\section{Summary}
+\begin{frame}{Summary}
+    Final section to show progress bar completion.
 \end{frame}
 
 \begin{frame}{References}
