@@ -1,0 +1,170 @@
+\documentclass[aspectratio=169]{beamer}
+
+% 主题设置
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% \usepackage{fourier-otf}       % Utopia 风格
+% 中文支持
+\usepackage{ctex}
+\usepackage[UTF8]{ctex}
+\usepackage[backend=biber, style=numeric]{biblatex} % 导入并设置 biblatex
+\addbibresource{ref.bib} % 指定 .bib 文件
+\renewcommand*{\bibfont}{\tiny}
+% 常用包
+\usepackage{xcolor}
+\usepackage{lmodern} % 【重要】支持任意大小的字体缩放，否则可能无法精确调整
+\usepackage{graphicx}
+\usepackage{minibox}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{bbm}
+\usepackage{tcolorbox}
+\usepackage{algorithm}
+\usepackage{caption}
+% \usepackage{algorithmic}
+\usepackage{algpseudocode} % 定义 algorithmic 环境和所有伪代码命令
+% 自定义颜色
+\definecolor{myblue}{HTML}{5b668e} %#5b668e
+\definecolor{mygray}{HTML}{d8d2c3} %#d8d2c3
+\renewcommand{\algorithmname}{Algorithm}
+% ===== 代码高亮设置 =====
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{myblue}\bfseries,
+    commentstyle=\color{green!30!black},
+    stringstyle=\color{red!30!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    frame=single,
+    breaklines=true,
+    showstringspaces=false,
+    rulecolor=\color{myblue!60!black},
+    backgroundcolor=\color{mygray!25}
+}
+% ===== 全局配色 =====
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{structure}{fg=myblue}
+\setbeamercolor{title}{fg=white,bg=myblue}
+\setbeamercolor{frametitle}{fg=white,bg=myblue}
+\setbeamercolor{block title}{fg=white,bg=myblue!90!black}
+\setbeamercolor{block body}{fg=black,bg=mygray!30!white}
+\setbeamercolor{alerted text}{fg=red!40!mygray}
+\setbeamercolor{example text}{fg=green!25!mygray}
+\setbeamertemplate{enumerate item}[circle]
+\setbeamertemplate{enumerate subitem}[square]
+\setbeamertemplate{enumerate subsubitem}[square]
+\setbeamertemplate{frametitle}{
+  % \vskip1ex
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.4ex,dp=1ex,leftskip=0.3cm,rightskip=0.3cm]{frametitle}
+    \usebeamerfont{frametitle}\insertframetitle
+    \ifx\insertframesubtitle\@empty
+    \else
+      {\hspace{0.6em}\usebeamerfont{framesubtitle}\color{fg}\insertframesubtitle}
+    \fi
+  \end{beamercolorbox}
+
+}
+
+\newenvironment{autoframe}
+  {\begin{frame}{\insertsection}{\insertsubsection}}
+  {\end{frame}}
+\setbeamercolor{frametitle}{fg=white,bg=myblue}
+% ===== 字体与布局调整 =====
+\setbeamertemplate{navigation symbols}{} % 去除右下角导航符号
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\usefonttheme{professionalfonts}
+\useinnertheme{rounded}
+\useoutertheme{infolines}
+\newtcolorbox{eblock}[1][]{
+    colback=mygray!20,
+    colframe=myblue,
+    arc=4pt,
+    boxrule=1pt,
+    left=4pt, right=4pt, top=2pt, bottom=2pt,
+    #1
+}
+
+\setbeamertemplate{section in toc}{
+  \leavevmode\leftskip=1em%
+  \tikz[baseline=-0.5ex]{
+    \node[draw=myblue, fill=myblue!20, circle, inner sep=1pt, text=myblue, font=\bfseries\footnotesize]
+      {\inserttocsectionnumber};
+  }\hspace{0.6em}%
+  \inserttocsection
+}
+
+% 如果有 subsection，也可以这样改
+\setbeamertemplate{subsection in toc}{
+  \leavevmode\leftskip=2.5em%
+  \tikz[baseline=-0.5ex]{
+    \node[draw=myblue!60, fill=mygray!40, circle, inner sep=0.7pt, text=myblue, font=\scriptsize]
+      {\inserttocsubsectionnumber};
+  }\hspace{0.6em}%
+  \inserttocsubsection\par
+}
+
+% 主层级 bullet
+\setbeamertemplate{itemize item}{\color{myblue}$\bullet$}
+% 第二层级 bullet
+\setbeamertemplate{itemize subitem}{\color{myblue}$\bullet$}
+% 第三层级 bullet
+\setbeamertemplate{itemize subsubitem}{\color{myblue}$\circ$}
+\newcommand{\emphblue}[1]{\textbf{\color{myblue}#1}}
+\newcommand{\emphred}[1]{\textbf{\color{mygray!44!red}#1}}
+
+% ====================
+% 标题信息（请修改）
+% ====================
+\title{Presentation Title}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+% 添加logo（可选）
+% \logo{\includegraphics[height=0.8cm]{logo.png}}
+
+\begin{document}
+
+% 标题页
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% 目录页
+\begin{frame}{目录}
+    \tableofcontents
+\end{frame}
+
+% ====================
+% 正文开始
+% ====================
+\section{Introduction}
+\begin{frame}{Introduction}
+    \begin{itemize}
+        \item First item
+        \item Second item
+        \item Third item
+    \end{itemize}
+\end{frame}
+
+\section{Main Content}
+\begin{autoframe}
+    This frame automatically uses the current section and subsection as its title.
+    \begin{block}{A Block Example}
+        \begin{itemize}
+            \item Point A
+            \item Point B
+        \end{itemize}
+    \end{block}
+\end{autoframe}
+
+\begin{frame}{References}
+    \printbibliography
+\end{frame}
+
+\end{document}
