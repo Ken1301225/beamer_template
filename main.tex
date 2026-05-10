@@ -259,24 +259,24 @@
 
 % ====================
 % 帧标题模板 —— 大标题（无红线）
+% 仅在有内容时占位
 % ====================
 \setbeamertemplate{frametitle}{%
-  \vspace{4pt}%
-  \begin{beamercolorbox}[wd=\paperwidth,sep=0pt,leftskip=0.7cm,rightskip=0.7cm]{normal text}
-    \begin{minipage}[t]{0.88\textwidth}
-      {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle}%
-      \ifx\insertframesubtitle\@empty
-      \else
-        \\[4pt]%
-        {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}%
-      \fi
-    \end{minipage}%
-    \vspace{5pt}%
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,sep=0pt,leftskip=0.7cm,rightskip=0.7cm]{frametitle}%
+    \vskip6pt%
+    {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle}%
+    \ifx\insertframesubtitle\@empty\else%
+      \\[3pt]%
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}%
+    \fi%
+    \vskip4pt%
   \end{beamercolorbox}%
 }
 
 % ====================
 % Header 模板 —— 章节名 + 页码 + 分段进度条
+% 处理无 section 的情况（标题页、目录页）
 % ====================
 \makeatletter
 \setbeamertemplate{headline}{%
@@ -284,34 +284,53 @@
   \leavevmode%
   \hbox to \paperwidth{%
     \hskip0.5cm%
-    {\usebeamerfont{section in head}\color{w-text}\insertsection}%
+    \ifx\insertsection\@empty%
+      \usebeamerfont{section in head}\color{w-muted}%
+    \else%
+      \usebeamerfont{section in head}\color{w-text}\insertsection%
+    \fi%
     \hfill
     {\usebeamerfont{date}\color{w-subtext}\insertframenumber\,/\,\inserttotalframenumber}%
     \hskip0.5cm%
   }%
   \vskip4pt%
   \ifnum\value{totalsections}>0%
-    \leavevmode%
-    \hbox to \paperwidth{%
-      \hskip0.5cm%
-      \foreach \i in {1,...,\value{totalsections}}{%
-        \ifnum\i<\insertsectionnumber%
-          {\color{w-accent}\rule{\dimexpr(\paperwidth-1cm)/\value{totalsections}-2pt\relax}{4pt}}%
-          \hskip2pt%
-        \else
-          \ifnum\i=\insertsectionnumber%
-            {\color{w-rose}\rule{\dimexpr(\paperwidth-1cm)/\value{totalsections}-2pt\relax}{4pt}}%
+    \ifnum\insertsectionnumber>0%
+      \leavevmode%
+      \hbox to \paperwidth{%
+        \hskip0.5cm%
+        \foreach \i in {1,...,\value{totalsections}}{%
+          \ifnum\i<\insertsectionnumber%
+            {\color{w-accent}\rule{\dimexpr(\paperwidth-1cm)/\value{totalsections}-2pt\relax}{4pt}}%
             \hskip2pt%
           \else
-            {\color{w-line}\rule{\dimexpr(\paperwidth-1cm)/\value{totalsections}-2pt\relax}{4pt}}%
-            \hskip2pt%
+            \ifnum\i=\insertsectionnumber%
+              {\color{w-rose}\rule{\dimexpr(\paperwidth-1cm)/\value{totalsections}-2pt\relax}{4pt}}%
+              \hskip2pt%
+            \else
+              {\color{w-line}\rule{\dimexpr(\paperwidth-1cm)/\value{totalsections}-2pt\relax}{4pt}}%
+              \hskip2pt%
+            \fi
           \fi
-        \fi
+        }%
+        \hfill%
       }%
-      \hfill%
-    }%
-  \fi%
-  \vskip3pt%
+    \else
+      % 没有 section 的页面（标题页、目录页）—— 显示全灰色进度条
+      \leavevmode%
+      \hbox to \paperwidth{%
+        \hskip0.5cm%
+        \foreach \i in {1,...,\value{totalsections}}{%
+          {\color{w-line}\rule{\dimexpr(\paperwidth-1cm)/\value{totalsections}-2pt\relax}{4pt}}%
+          \hskip2pt%
+        }%
+        \hfill%
+      }%
+    \fi
+  \fi
+  \vskip2pt%
+  {\color{w-surface}\hrule height 0.6pt}%
+  \vskip2pt%
 }
 \makeatother
 
